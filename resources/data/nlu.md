@@ -63,6 +63,11 @@
 - how can i save time with you?
 - help
 
+## intent:sick
+- i got sick and would like to let you know
+- i'm sick
+- i'm staying home, i'm sick
+
 ## intent:leave_annual_total
 - how many vacation days do i have for this year?
 - vacation days for this year?
@@ -81,6 +86,13 @@
 - annual left
 - how much is left?
 - vacation left?
+
+## intent:leave_annual_taken
+- how many leave days do i have already taken?
+- how much vacation do i have already taken?
+- how many vacation days do i have taken?
+- how many days do i have already taken?
+- how much vacation do i have taken this year?
 
 ## intent:leave_annual_planned
 - how much vacation do i have planned?
@@ -117,6 +129,23 @@
 - day off
 - when is the next public holiday?
 - when is the next public holiday in my office?
+
+## intent:option1
+- the first one
+- 1
+- number one
+- number 1
+- the one in may
+- leaves in may
+- may
+
+## intent:option2
+- the second one
+- 2
+- number 2
+- number two
+- the one in june
+- june
 
 ## intent:confirm
 - yes

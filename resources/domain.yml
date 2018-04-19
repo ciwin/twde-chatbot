@@ -7,14 +7,19 @@ intents:
 - how_are_you
 - are_you_a_robot
 - what_is_your_name
+- sick
+- sick_help
 - leave_annual_total
 - leave_annual_left
+- leave_annual_taken
 - leave_annual_planned
 - leave_annual_planned_list
 - leave_annual_cancel
 - leave_annual_take
 - public_holidays
 - confirm
+- option1
+- option2
 - deny
 - done
 - insult
@@ -34,15 +39,24 @@ actions:
 - utter_what_is_your_name
 - utter_greet
 - utter_how_can_i_help
+- utter_sick
+- utter_sick_help
 - utter_leave_annual_total
 - utter_leave_annual_left
+- utter_leave_annual_taken
+- utter_leave_annual_taken_list
+- utter_leave_annual_taken_list_1
 - utter_leave_annual_planned
 - utter_leave_annual_planned_list
+- utter_leave_annual_planned_list_1
+- utter_leave_annual_planned_list_2
 - utter_leave_annual_cancel
 - utter_leave_annual_cancel_expl
 - utter_leave_annual_take
 - utter_public_holidays
 - utter_confirm
+- utter_option1
+- utter_option2
 - utter_deny
 - utter_deny_bye
 - utter_done
@@ -90,21 +104,31 @@ templates:
   utter_how_can_i_help:
     - text: "Let me know how I can help!"
     - text: "Let me know what I can do for you!"
+  utter_sick:
+    - text: "Sorry to hear that! Get well soon. Unfortunately I can't help you with that."
+  utter_sick_help:
+    - text: "Here you'll find some help how to call in sick: https://docs.google.com/document/d/14hPGu0TmHzMaEWTYTVJ-Ter641zQCsvxw4rpTMp_RVA/edit?usp=sharing"
   utter_leave_annual_total:
     - text: "You have 28 leave days for 2018"
   utter_leave_annual_left:
     - text: "21 leave days are left for 2018"
     - text: "You have 21 leave days left for 2018"
     - text: "In 2018 you can still take 21 leave days"
+  utter_leave_annual_taken:
+    - text: "You have already taken one day of leave. Would you like to see the list of your past days off?"
+  utter_leave_annual_taken_list:
+    - text: "Here it is:"
+  utter_leave_annual_taken_list_1:
+    - text: "- February 22"
   utter_leave_annual_planned:
     - text: "You have 6 days planned. Would you like to see the list of your upcoming leaves?"
   utter_leave_annual_planned_list:
     - text: "These are your planned vacations:"
-      buttons:
-      - title: "vacation 1"
-        payload: "vacation_1"
-      - title: "vacation 2"
-        payload: "vacation_2"
+    - text: "Here's a list of your upcoming leaves:"
+  utter_leave_annual_planned_list_1:
+    - text: "- May 2 to May 4"
+  utter_leave_annual_planned_list_2:
+    - text: "- June 10 to June 12"
   utter_leave_annual_cancel:
     - text: "Would you like to cancel one?"
     - text: "Which leave would you like to cancel?"
@@ -118,6 +142,10 @@ templates:
     - text: "Next public holiday is on may 1"
   utter_confirm:
     - text: "On it"
+  utter_option1:
+    - text: "Cool, you'd like to cancel your leave from May 2 to May 4. Right?"
+  utter_option2:
+    - text: "Cool, you'd like to cancel your leave from June 10 to June 12. Right?"
   utter_deny:
     - text: "Alright then. Anything else I can help you with?"
   utter_done:

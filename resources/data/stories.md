@@ -48,6 +48,11 @@
   - utter_skills
   - utter_how_can_i_help
 
+## sick
+* sick
+  - utter_sick
+  - utter_sick_help
+  
 ## leave_annual_total
 * leave_annual_total
   - utter_leave_annual_total
@@ -56,11 +61,26 @@
 * leave_annual_left
   - utter_leave_annual_left
 
+## leave_annual_taken
+* leave_annual_taken
+  - utter_leave_annual_taken
+* confirm
+  - utter_leave_annual_taken_list
+  - utter_leave_annual_taken_list_1
+
+## leave_annual_taken
+* leave_annual_taken
+  - utter_leave_annual_taken
+* deny
+  - utter_deny
+
 ## leave_annual_planned
 * leave_annual_planned
   - utter_leave_annual_planned
 * confirm  
   - utter_leave_annual_planned_list
+  - utter_leave_annual_planned_list_1
+  - utter_leave_annual_planned_list_2
 
 ## leave_annual_planned
 * leave_annual_planned
@@ -85,7 +105,6 @@
 * leave_annual_cancel
   - utter_leave_annual_cancel
   - utter_leave_annual_planned_list
-  - utter_leave_annual_cancel_expl
 
 ## leave_annual_take
 * leave_annual_take
@@ -99,6 +118,14 @@
 ## confirm
 * confirm
   - utter_confirm
+
+## option1
+* option1
+  - utter_option1
+
+## option2
+* option2
+  - utter_option2
 
 ## deny bye
 * deny  
