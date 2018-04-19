@@ -38,7 +38,8 @@ with google_chat_api.app.test_client() as client:
                                                                  space='some space',
                                                                  type='MESSAGE',
                                                                  message=dict(text='some message',
-                                                                              thread=dict(name='id1'))),
+                                                                              thread=dict(name='id1'))
+                                                                 )),
                                content_type='application/json')
 
         assert 200 == response.status_code
