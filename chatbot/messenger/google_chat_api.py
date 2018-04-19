@@ -1,58 +1,70 @@
 import logging
 
-from flask import Flask, request, json, abort
+from flask import Flask, request, json
 
-from chatbot import config
+from chatbot.config import CONF
 from chatbot.nlu import dialog
+from chatbot.messenger import middlewares
 
 logger = logging.getLogger(__name__)
 app = Flask(__name__)
-conf = config.Config()
 
 
-def format_message(message):
+def get_success_response(message):
     logger.debug("sending %s", message)
     return json.jsonify({'text': message})
 
 
-def invalid_request(incoming_request):
-    if not incoming_request.get_json():
-        response = json.jsonify({'error': "Bad request"})
-        response.status_code = 400
-        return response
+SCHEMA = {
+    "type": "object",
+    "required": ["type", "token"],
+    "properties": {
+        "type": {"type": "string"},
+        "token": {"type": "string"},
+        "message": {
+            "type": "object",
+            "required": ["text", "thread"],
+            "properties": {
+                "text": {"type": "string"},
+                "thread": {
+                    "type": "object",
+                    "required": ["name"],
+                    "properties": {
+                        "name": {"type": "string"},
+                    }
+                }
+            }
+        }
+    }
+}
 
-    event = incoming_request.get_json()
-    logger.debug("received %s", event)
-    logger.debug("token %s", conf.get_value("hangouts-api-key"))
 
-    if event.get('token') != conf.get_value("hangouts-api-key"):
-        response = json.jsonify({'error': "Wrong token"})
-        response.status_code = 401
-        return response
-    if not event.get('type') or not event.get('message') or not event.get('space'):
-        response = json.jsonify({'error': "Invalid request, type or message missing"})
-        response.status_code = 400
-        return response
-
-
-@app.route("/" + conf.get_value("messenger-endpoint"), methods=['POST'])
+@app.route("/" + CONF.get_value("messenger-endpoint"), methods=['POST'])
+@middlewares.is_json
+@middlewares.authenticate
+@middlewares.validate(SCHEMA)
 def on_event():
     """Handles an event from Hangouts Chat."""
-    invalid_request_response = invalid_request(request)
-    if invalid_request_response:
-        return invalid_request_response
-
     event = request.get_json()
-    if event['type'] == 'ADDED_TO_SPACE' and event['space']['type'] == 'ROOM':
-        return format_message('Thanks for adding me to "%s"!' % event['space']['displayName'])
-    elif event['type'] == 'MESSAGE':
+
+    if event.get('type') == 'ADDED_TO_SPACE':
+        logger.debug('Retrieve and send welcome text')
+
+        message = dialog.get_welcome_message(
+            dialog.get_agent(),
+        )
+        response = get_success_response(message)
+    elif event.get('type') == 'MESSAGE':
         message_text = event['message']['text']
         sender_id = event['message']['thread']['name']
-        calculated_reply = dialog.handle_message_input(
+
+        logger.debug('Retrieve response for: %s', message_text)
+        message = dialog.handle_message_input(
             dialog.get_agent(),
             message_text,
             sender_id=sender_id,
         )
-        return format_message(calculated_reply)
+        response = get_success_response(message)
     else:
-        abort(400)
+        response = middlewares.get_error_response('unknown message type {}'.format(event["type"]))
+    return response
