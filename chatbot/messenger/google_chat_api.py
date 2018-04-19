@@ -3,20 +3,11 @@ import logging
 from flask import Flask, request, json, abort
 
 from chatbot import config
-from chatbot.nlu import intent_classificator, dialog
+from chatbot.nlu import dialog
 
 logger = logging.getLogger(__name__)
 app = Flask(__name__)
 conf = config.Config()
-
-_AGENT = None
-
-
-def get_agent():
-    global _AGENT
-    if not _AGENT:
-        _AGENT = dialog.load_agent(intent_classificator.load_classificator())
-    return _AGENT
 
 
 def format_message(message):
@@ -55,7 +46,7 @@ def on_event():
     if event['type'] == 'ADDED_TO_SPACE' and event['space']['type'] == 'ROOM':
         return format_message('Thanks for adding me to "%s"!' % event['space']['displayName'])
     elif event['type'] == 'MESSAGE':
-        calculated_reply = dialog.handle_message_input(get_agent(), event['message']['text'])
+        calculated_reply = dialog.handle_message_input(dialog.get_agent(), event['message']['text'])
         return format_message(calculated_reply)
     else:
         abort(400)

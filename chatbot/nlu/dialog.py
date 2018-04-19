@@ -1,4 +1,5 @@
 import logging
+import threading
 
 from rasa_core.agent import Agent
 from rasa_core.policies.keras_policy import KerasPolicy
@@ -6,8 +7,21 @@ from rasa_core.policies.memoization import MemoizationPolicy
 from rasa_core.train import train_dialogue_model
 
 from chatbot.config import Config
+from chatbot.nlu import intent_classificator
 
 logger = logging.getLogger(__name__)
+
+
+_AGENT = None
+_AGENT_LOCK = threading.RLock()
+
+
+def get_agent():
+    global _AGENT
+    if not _AGENT:
+        with _AGENT_LOCK:
+            _AGENT = load_agent(intent_classificator.load_classificator())
+    return _AGENT
 
 
 def load_agent(intent_classificator):
