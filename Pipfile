@@ -11,6 +11,7 @@ spacy = "*"
 Flask = "*"
 gunicorn = "*"
 chatbot = {path = "."}
+requests = "*"
 
 [dev-packages]
 pytest = "*"

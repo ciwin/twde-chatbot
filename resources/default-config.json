@@ -13,5 +13,6 @@
   "dialog-model-batch-size": 15,
   "dialog-model-epochs": 100,
   "dialog-model-max-training-samples": 300,
-  "backend-api-token": "secret-token"
+  "backend-api-token": "secret-token",
+  "backend-api-base-url": "http://google.de/"
 }
