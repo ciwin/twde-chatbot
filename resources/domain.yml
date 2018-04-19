@@ -1,6 +1,8 @@
 intents:
 - greet
+- goodbye
 - thanks
+- sorry
 - skills
 - how_are_you
 - are_you_a_robot
@@ -14,10 +16,18 @@ intents:
 - public_holidays
 - confirm
 - deny
+- done
+- insult
 
 actions:
 - utter_welcome
+- utter_goodbye
 - utter_thanks
+- utter_sorry
+- utter_feedback
+- utter_feedback_how
+- utter_continue
+- utter_have_a_great_day
 - utter_skills
 - utter_how_are_you
 - utter_are_you_a_robot
@@ -35,16 +45,36 @@ actions:
 - utter_confirm
 - utter_deny
 - utter_deny_bye
+- utter_done
+- utter_insult
+- utter_insult_follow_up
+
 
 templates:
   utter_welcome:
     - text: "Hey there! I'm Balu."
+  utter_goodbye:
+    - text: "Bye bye!"
   utter_greet:
     - text: "Welcome back! What can I do for you?"
     - text: "Hey there! How can I help you?"
+  utter_sorry:
+    - text: "No worries."
+    - text: "All good."
+    - text: "Nothing to worry about."
+  utter_continue:
+    - text: "Shall we continue?"
+    - text: "Let's continue?"
+  utter_have_a_great_day:
+    - text: "Enjoy the rest of your day!"
+    - text: "Have a good day"
   utter_thanks:
     - text: "You are welcome!"
     - text: "Happily!"
+  utter_feedback:
+    - text: "Oh btw, would you mind to give us some feedback?"
+  utter_feedback_how:
+    - text: "Great, Thanks! Just follow this [link] or type it directly in the chat."
   utter_how_are_you:
     - text: "My servers are running, despite that I'm not sure how to answer. You know, I'm nothing but a chatbot. I hope you're good though!"
     - text: "You know that I'm a chatbot right? Not big on feelings, but my systems are running. And it's spring."
@@ -63,7 +93,9 @@ templates:
   utter_leave_annual_total:
     - text: "You have 28 leave days for 2018"
   utter_leave_annual_left:
-    - text: "There's a total of 21 days left for this year"
+    - text: "21 leave days are left for 2018"
+    - text: "You have 21 leave days left for 2018"
+    - text: "In 2018 you can still take 21 leave days"
   utter_leave_annual_planned:
     - text: "You have 6 days planned. Would you like to see the list of your upcoming leaves?"
   utter_leave_annual_planned_list:
@@ -75,15 +107,25 @@ templates:
         payload: "vacation_2"
   utter_leave_annual_cancel:
     - text: "Would you like to cancel one?"
+    - text: "Which leave would you like to cancel?"
   utter_leave_annual_cancel_expl:
     - text: "Just type the order number and I'll cancel it for you."
   utter_leave_annual_take:
-    - text: "You have 21 days of leave left. When would you like to take your leave?"
+    - text: "When would you like to take your leave?"
+    - text: "When would you like to take some vacation?"
+    - text: "Please let me know, when you'd like to take a leave"
   utter_public_holidays:
     - text: "Next public holiday is on may 1"
   utter_confirm:
     - text: "On it"
   utter_deny:
     - text: "Alright then. Anything else I can help you with?"
+  utter_done:
+    - text: "Great! :)"
   utter_deny_bye:
     - text: "Cool. I hope you have a great day!"
+  utter_insult:
+    - text: "You're mean. Can we get back to being polite?"
+    - text: "That's not very friendly. How about being polite?"
+  utter_insult_follow_up:
+    - text: "OK, I think it's better to stop the conversation. I hope you are having a great day!"

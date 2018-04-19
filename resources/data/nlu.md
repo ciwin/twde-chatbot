@@ -8,12 +8,33 @@
 - good morning
 - good evening
 
+## intent:goodbye
+- c u
+- goodbye
+- Bye
+- good Bye
+- see you later
+- laters
+
 ## intent:thanks
 - thanks
 - thank you
 - thanks a lot
 - merci
 - thnx
+
+## intent:sorry
+- i'm sorry
+- sorry for what i just said
+- my apologies
+- pardon
+- excuse me
+
+## intent:done
+- done
+- will do
+- did it
+- consider it done
 
 ## intent:how_are_you
 - how are you?
@@ -40,6 +61,7 @@
 - why are you there?
 - what can you assist me with?
 - how can i save time with you?
+- help
 
 ## intent:leave_annual_total
 - how many vacation days do i have for this year?
@@ -72,6 +94,7 @@
 - could you give me a list of my upcoming vacations?
 - could you give me a list of my planned vacations?
 - could you give me a list of my booked vacations?
+- i'd like to see my upcoming vacations
 
 ## intent:leave_annual_cancel
 - i'd like to cancel some vacation
@@ -110,3 +133,11 @@
 - not really
 - no way
 - never
+
+## intent:insult
+- stupid
+- stupid thing
+- how stupid are you?
+- annoying
+- worthless
+- shitty
