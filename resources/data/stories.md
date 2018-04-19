@@ -52,7 +52,11 @@
 * sick
   - utter_sick
   - utter_sick_help
-  
+
+## sick
+* training
+  - utter_training
+
 ## leave_annual_total
 * leave_annual_total
   - utter_leave_annual_total

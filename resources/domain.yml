@@ -9,6 +9,7 @@ intents:
 - what_is_your_name
 - sick
 - sick_help
+- training
 - leave_annual_total
 - leave_annual_left
 - leave_annual_taken
@@ -41,6 +42,7 @@ actions:
 - utter_how_can_i_help
 - utter_sick
 - utter_sick_help
+- utter_training
 - utter_leave_annual_total
 - utter_leave_annual_left
 - utter_leave_annual_taken
@@ -66,12 +68,15 @@ actions:
 
 templates:
   utter_welcome:
-    - text: "Hey there! I'm Balu."
+    - text: "Hello! I'm Balu your first TWDE chatbot"
+    - text: "Hey there! I'm Balu your first TWDE chatbot"
   utter_goodbye:
     - text: "Bye bye!"
   utter_greet:
+    - text: "Hi! What can I do for you?"
     - text: "Welcome back! What can I do for you?"
     - text: "Hey there! How can I help you?"
+    - text: "Hello! Is there anything I can do for you?"
   utter_sorry:
     - text: "No worries."
     - text: "All good."
@@ -82,9 +87,11 @@ templates:
   utter_have_a_great_day:
     - text: "Enjoy the rest of your day!"
     - text: "Have a good day"
+    - text: "Enjoy the sun!"
   utter_thanks:
     - text: "You are welcome!"
     - text: "Happily!"
+    - text: "Very welcome!"
   utter_feedback:
     - text: "Oh btw, would you mind to give us some feedback?"
   utter_feedback_how:
@@ -107,7 +114,9 @@ templates:
   utter_sick:
     - text: "Sorry to hear that! Get well soon. Unfortunately I can't help you with that."
   utter_sick_help:
-    - text: "Here you'll find some help how to call in sick: https://docs.google.com/document/d/14hPGu0TmHzMaEWTYTVJ-Ter641zQCsvxw4rpTMp_RVA/edit?usp=sharing"
+    - text: "Here you'll find some help how to call in sick: [link]"
+  utter_training:
+    - text: "I can't help you with that. But have a look here [link]"
   utter_leave_annual_total:
     - text: "You have 28 leave days for 2018"
   utter_leave_annual_left:
@@ -156,4 +165,4 @@ templates:
     - text: "You're mean. Can we get back to being polite?"
     - text: "That's not very friendly. How about being polite?"
   utter_insult_follow_up:
-    - text: "OK, I think it's better to stop the conversation. I hope you are having a great day!"
+    - text: "OK, I think it's better to stop the conversation."

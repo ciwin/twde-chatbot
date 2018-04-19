@@ -53,6 +53,7 @@
 - what is your name?
 - what's your name?
 - how are you called?
+- who are you?
 
 ## intent:skills
 - what can you do?
@@ -67,6 +68,12 @@
 - i got sick and would like to let you know
 - i'm sick
 - i'm staying home, i'm sick
+
+## intent:training
+- workshop
+- training
+- pdb
+- conference
 
 ## intent:leave_annual_total
 - how many vacation days do i have for this year?
@@ -152,6 +159,7 @@
 - right
 - confirm
 - yep
+- ok
 - correct
 - that's what i want
 - certainly
