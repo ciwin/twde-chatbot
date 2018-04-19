@@ -46,7 +46,13 @@ def on_event():
     if event['type'] == 'ADDED_TO_SPACE' and event['space']['type'] == 'ROOM':
         return format_message('Thanks for adding me to "%s"!' % event['space']['displayName'])
     elif event['type'] == 'MESSAGE':
-        calculated_reply = dialog.handle_message_input(dialog.get_agent(), event['message']['text'])
+        message_text = event['message']['text']
+        sender_id = event['message']['thread']['name']
+        calculated_reply = dialog.handle_message_input(
+            dialog.get_agent(),
+            message_text,
+            sender_id=sender_id,
+        )
         return format_message(calculated_reply)
     else:
         abort(400)

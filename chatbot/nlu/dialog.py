@@ -31,8 +31,8 @@ def load_agent(intent_classificator):
     return Agent.load(conf.get_value('dialog-model-path'), interpreter=intent_classificator)
 
 
-def handle_message_input(context_agent, user_input):
-    responses = context_agent.handle_message(user_input)
+def handle_message_input(context_agent, user_input, sender_id=None):
+    responses = context_agent.handle_message(user_input, sender_id=sender_id)
 
     # FIXME: We chose the first one, not the best heuristic.
     # FIXME: Hardcoded fallback message.
