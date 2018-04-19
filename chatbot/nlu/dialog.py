@@ -19,6 +19,7 @@ _AGENT_LOCK = threading.RLock()
 def get_agent():
     global _AGENT
     if not _AGENT:
+        logger.debug("Creating a new agent")
         with _AGENT_LOCK:
             _AGENT = load_agent(intent_classificator.load_classificator())
     return _AGENT

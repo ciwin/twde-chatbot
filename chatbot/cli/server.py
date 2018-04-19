@@ -14,11 +14,15 @@ if os.getenv('FLASK_PROFILE'):
     app.wsgi_app = ProfilerMiddleware(app.wsgi_app, restrictions=[30])
 
 
-def run():
+def _preload():
     # Run loading agent in background to not hold app from starting
     # since Heroku timeout and kill app if it doesn't listen after
     # some timeout.
     threading.Thread(target=dialog.get_agent).start()
+
+
+def run():
+    _preload()
 
     port = os.environ.get('PORT', 8080)
     app.run(port=port, debug=True)
