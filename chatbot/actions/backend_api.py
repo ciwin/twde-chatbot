@@ -1,8 +1,7 @@
-from chatbot.config import Config
+from chatbot.config import CONF
 import requests
 import logging
 
-conf = Config()
 logger = logging.getLogger(__name__)
 
 
@@ -18,10 +17,10 @@ def _login_name(email):
 
 
 def get_employee(email):
-    url = conf.get_value('backend-api-base-url') + 'people/' + _login_name(email)
-    return validate_response(requests.get(url, headers={'Authorization': conf.get_value('backend-api-token')}))
+    url = CONF.get_value('backend-api-base-url') + 'people/' + _login_name(email)
+    return validate_response(requests.get(url, headers={'Authorization': CONF.get_value('backend-api-token')}))
 
 
 def get_leave(employee_id):
-    url = conf.get_value('backend-api-base-url') + 'leave?employee_ids=' + employee_id
-    return validate_response(requests.get(url, headers={'Authorization': conf.get_value('backend-api-token')}))
+    url = CONF.get_value('backend-api-base-url') + 'leave?employee_ids=' + employee_id
+    return validate_response(requests.get(url, headers={'Authorization': CONF.get_value('backend-api-token')}))
