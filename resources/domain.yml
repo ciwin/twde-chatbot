@@ -181,7 +181,5 @@ templates:
     - text: "That's not very friendly. How about being polite?"
   utter_insult_follow_up:
     - text: "OK, I think it's better to stop the conversation."
-      image: "https://media.giphy.com/media/Zaqw9iOS7c3BK/giphy.gif"
   utter_random:
-    - text: ":)"
-      image: "https://media.giphy.com/media/N2nWjekit6UA8/giphy.gif"
+    - text: "https://media.giphy.com/media/N2nWjekit6UA8/giphy.gif"
