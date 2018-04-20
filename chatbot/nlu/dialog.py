@@ -35,7 +35,7 @@ def handle_message_input(context_agent, user_input, sender_id=None):
 
     # FIXME: We chose the first one, not the best heuristic.
     # FIXME: Hardcoded fallback message.
-    return responses[0] if responses else 'Sorry I cannot understand!'
+    return '\n'.join(responses) if responses else 'Sorry I cannot understand!'
 
 
 def get_welcome_message(context_agent):

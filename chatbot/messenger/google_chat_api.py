@@ -72,4 +72,5 @@ def on_event():
 
 @app.route("/health", methods=['GET'])
 def health():
+    logger.info("health checked received")
     return json.jsonify({})
