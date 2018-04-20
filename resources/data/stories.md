@@ -100,6 +100,8 @@
 ## leave_annual_planned_list
 * leave_annual_planned_list
   - utter_leave_annual_planned_list
+  - utter_leave_annual_planned_list_1
+  - utter_leave_annual_planned_list_2
   - utter_leave_annual_cancel
 * deny  
   - utter_deny
@@ -175,3 +177,7 @@
 * deny
   - utter_insult_follow_up
   - utter_have_a_great_day
+
+## random
+* random
+  - utter_random

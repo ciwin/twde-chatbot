@@ -186,6 +186,7 @@
 - correct
 - that's what i want
 - certainly
+- of course
 
 ## intent:deny
 - no
@@ -202,4 +203,12 @@
 - annoying
 - worthless
 - shitty
+- wtf
 - yes you're stupid
+
+## intent:random
+- omg
+- you're beautiful
+- nice
+- parlez vous francais
+- deutsch
