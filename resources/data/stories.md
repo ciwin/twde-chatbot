@@ -10,7 +10,6 @@
   - utter_feedback_how
 * done
   - utter_done
-  - utter_thanks
 
 ## thanks
 * thanks
