@@ -63,6 +63,9 @@
 - what can you assist me with?
 - how can i save time with you?
 - help
+- what can you do for me?
+- how can you help?
+
 
 ## intent:sick
 - i got sick and would like to let you know
@@ -108,12 +111,15 @@
 - how many leave days do i have planned?
 - how many leaves do i have booked?
 - how many leaves do i have planned?
+- show me how my vacations look like now
 
 ## intent:leave_annual_planned_list
 - could you give me a list of my upcoming vacations?
 - could you give me a list of my planned vacations?
 - could you give me a list of my booked vacations?
 - i'd like to see my upcoming vacations
+- can I see my leaves for next month?
+- show me my leaves
 
 ## intent:leave_annual_cancel
 - i'd like to cancel some vacation
@@ -129,6 +135,14 @@
 - could i book some vacation?
 - i'd like book some vacation
 - i'd like to take some leave days
+- okay how about taking vacations can you do that?
+- take vacation
+- okay, I want to book holiday
+- book holiday
+- book holidays
+- I'd like to book another holiday
+- I want to take some holidays
+- I want to book vacations
 
 ## intent:leave_annual_take_date
 - take leave first week of July
@@ -141,6 +155,7 @@
 - day off
 - when is the next public holiday?
 - when is the next public holiday in my office?
+- Can you remind me, when is the next public holiday?
 
 ## intent:option1
 - the first one
@@ -167,6 +182,7 @@
 - confirm
 - yep
 - ok
+- okay
 - correct
 - that's what i want
 - certainly
@@ -186,3 +202,4 @@
 - annoying
 - worthless
 - shitty
+- yes you're stupid
