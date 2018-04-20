@@ -75,8 +75,8 @@ templates:
   utter_fallback:
     - text: "I'm sorry, I don't understand what you mean."
   utter_welcome:
-    - text: "Hello! I'm Balu your first TWDE chatbot"
-    - text: "Hey there! I'm Balu your first TWDE chatbot"
+    - text: "Hello! I'm Balu, your TWDE chatbot"
+    - text: "Hey there! I'm Balu, your TWDE chatbot"
   utter_goodbye:
     - text: "Bye bye!"
   utter_greet:
@@ -112,7 +112,7 @@ templates:
     - text: "Am I? Kidding. Yes."
     - text: "Frankly, I don't think about things like that. Because I am a robot."
   utter_what_is_your_name:
-    - text: "My name is Balu."
+    - text: "My name is Balu. http://google.com"
   utter_skills:
     - text: "My set of skills is still small, but you can already ask me about your total leave days for this year, what leaves you have planned, how many leaves you have already taken and what the next public holidays are."
   utter_how_can_i_help:
