@@ -68,3 +68,8 @@ def on_event():
     else:
         response = middlewares.get_error_response('unknown message type {}'.format(event["type"]))
     return response
+
+
+@app.route("/health", methods=['GET'])
+def health():
+    return json.jsonify({})

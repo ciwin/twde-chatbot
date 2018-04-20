@@ -69,3 +69,7 @@ with google_chat_api.app.test_client() as client:
 
         parsed_response = json.loads(response.data)
         assert "Welcome!" == parsed_response["text"]
+
+    def test_health_check():
+        response = client.get('/health')
+        assert response.status_code == 200
