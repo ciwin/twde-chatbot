@@ -50,10 +50,10 @@
 - are you a machine?
 
 ## intent:what_is_your_name
-- what is your name?
-- what's your name?
-- how are you called?
-- who are you?
+- what is your name
+- what's your name
+- how are you called
+- who are you
 
 ## intent:skills
 - what can you do?

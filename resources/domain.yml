@@ -100,7 +100,7 @@ templates:
     - text: "Happily!"
     - text: "Very welcome!"
   utter_feedback:
-    - text: "Oh btw, would you mind to give us some feedback?"
+    - text: "Would you like to give me some feedback? I'd appreciate that!"
   utter_feedback_how:
     - text: "Great, Thanks! Just follow this [link] or type it directly in the chat."
   utter_how_are_you:
@@ -112,7 +112,7 @@ templates:
     - text: "Am I? Kidding. Yes."
     - text: "Frankly, I don't think about things like that. Because I am a robot."
   utter_what_is_your_name:
-    - text: "My name is Balu. http://google.com"
+    - text: "My name is Balu."
   utter_skills:
     - text: "My set of skills is still small, but you can already ask me about your total leave days for this year, what leaves you have planned, how many leaves you have already taken and what the next public holidays are."
   utter_how_can_i_help:
@@ -123,7 +123,7 @@ templates:
   utter_sick:
     - text: "Sorry to hear that! Get well soon. Unfortunately I can't help you with that."
   utter_sick_help:
-    - text: "Here you'll find some help how to call in sick: [link]"
+    - text: "Here you'll find some help how to call in sick: https://goo.gl/3JnpMR"
   utter_training:
     - text: "I can't help you with that. But have a look here [link]"
   utter_leave_annual_total:
