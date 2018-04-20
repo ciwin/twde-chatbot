@@ -31,6 +31,8 @@ actions:
 - utter_fallback
 - utter_welcome
 - utter_goodbye
+- utter_mmh
+- utter_shoot
 - utter_thanks
 - utter_sorry
 - utter_feedback
@@ -81,6 +83,11 @@ templates:
     - text: "Hey there! I'm Balu, your TWDE chatbot"
   utter_goodbye:
     - text: "Bye bye!"
+  utter_mmh:
+    - text: "Mmmh, what now?"
+  utter_shoot:
+    - text: "I'm all ears!"
+    - text: "What is it?"
   utter_greet:
     - text: "Hi! What can I do for you?"
     - text: "Welcome back! What can I do for you?"
@@ -182,4 +189,4 @@ templates:
   utter_insult_follow_up:
     - text: "OK, I think it's better to stop the conversation."
   utter_random:
-    - text: "https://media.giphy.com/media/N2nWjekit6UA8/giphy.gif"
+    - text: ":)"

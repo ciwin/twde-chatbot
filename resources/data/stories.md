@@ -1,6 +1,14 @@
 ## greet
 * greet
   - utter_greet
+* confirm
+  - utter_shoot
+
+## greet
+* greet
+  - utter_greet
+* deny
+  - utter_mmh
 
 ## goodbye
 * goodbye
