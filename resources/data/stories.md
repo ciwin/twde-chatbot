@@ -66,7 +66,7 @@
 
 ## leave_annual_total
 * leave_annual_total
-  - utter_leave_annual_total
+  - action_leave_annual_total
 
 ## leave_annual_left
 * leave_annual_left

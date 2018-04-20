@@ -3,6 +3,7 @@ import logging
 import requests
 
 from chatbot.actions import middlewares
+from chatbot.actions.errors import BackendError
 from chatbot.config import CONF
 
 logger = logging.getLogger(__name__)
@@ -15,6 +16,8 @@ def _login_name(email):
 
 @middlewares.valid_response
 def get_employee(email):
+    if email is None:
+        raise BackendError('No email was given for requested user')
     url = BASE_API_URL + 'people/' + _login_name(email)
     return requests.get(url, headers={'Authorization': CONF.get_value('backend-api-token')})
 

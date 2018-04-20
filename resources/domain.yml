@@ -73,6 +73,7 @@ actions:
 - utter_insult
 - utter_insult_follow_up
 - utter_random
+- chatbot.actions.leave.ActionLeaveAnnualTotal
 
 
 templates:
@@ -136,7 +137,7 @@ templates:
   utter_training:
     - text: "I can't help you with that. But have a look here [link]"
   utter_leave_annual_total:
-    - text: "You have 28 leave days for 2018"
+    - text: "You have {annual_total} leave days for {this_year}"
   utter_leave_annual_left:
     - text: "You have 21 leave days left for 2018"
     - text: "In 2018 you can still take 21 leave days"

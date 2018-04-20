@@ -1,6 +1,8 @@
 import functools
 import logging
 
+from chatbot.actions.errors import BackendError
+
 logger = logging.getLogger(__name__)
 
 
@@ -9,8 +11,8 @@ def valid_response(func):
     def _valid_response(*args, **kw):
         response = func(*args, **kw)
         if response.status_code >= 300:
-            logger.debug("Got invalid response: %s", response)
-            return None
+            raise BackendError(
+                "Got invalid response: " + str(response.status_code))
         else:
             return response.json()
 

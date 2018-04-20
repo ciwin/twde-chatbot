@@ -1,4 +1,7 @@
+import pytest
+
 from chatbot.actions import backend_api
+from chatbot.actions.errors import BackendError
 
 
 class FakeResponse(object):
@@ -20,7 +23,8 @@ def test_get_employee(mocker):
 def test_invalid_response_get_employee(mocker):
     mock_request = mocker.patch('requests.get')
     mock_request.return_value = FakeResponse(404, None)
-    assert backend_api.get_employee('foo@bar') is None
+    with pytest.raises(BackendError):
+        backend_api.get_employee('foo@bar')
     mock_request.assert_called_with('http://google.de/people/foo', headers={'Authorization': 'secret-token'})
 
 
