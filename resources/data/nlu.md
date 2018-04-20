@@ -130,6 +130,11 @@
 - i'd like book some vacation
 - i'd like to take some leave days
 
+## intent:leave_annual_take_date
+- take leave first week of July
+- go on vacation the first week of July
+- take off the first week of July
+
 ## intent:public_holidays
 - public holidays
 - public holiday
@@ -145,6 +150,7 @@
 - the one in may
 - leaves in may
 - may
+- May 2 to May 4
 
 ## intent:option2
 - the second one
@@ -153,6 +159,7 @@
 - number two
 - the one in june
 - june
+- June 10 to June 12
 
 ## intent:confirm
 - yes
@@ -170,6 +177,7 @@
 - not really
 - no way
 - never
+- not yet
 
 ## intent:insult
 - stupid

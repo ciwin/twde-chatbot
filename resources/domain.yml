@@ -17,6 +17,7 @@ intents:
 - leave_annual_planned_list
 - leave_annual_cancel
 - leave_annual_take
+- leave_annual_take_date
 - public_holidays
 - confirm
 - option1
@@ -26,6 +27,7 @@ intents:
 - insult
 
 actions:
+- utter_fallback
 - utter_welcome
 - utter_goodbye
 - utter_thanks
@@ -40,6 +42,7 @@ actions:
 - utter_what_is_your_name
 - utter_greet
 - utter_how_can_i_help
+- utter_how_can_i_help_follow_up
 - utter_sick
 - utter_sick_help
 - utter_training
@@ -53,8 +56,10 @@ actions:
 - utter_leave_annual_planned_list_1
 - utter_leave_annual_planned_list_2
 - utter_leave_annual_cancel
-- utter_leave_annual_cancel_expl
 - utter_leave_annual_take
+- utter_leave_annual_take_confirm
+- utter_leave_annual_do_confirm
+- utter_leave_annual_booked
 - utter_public_holidays
 - utter_confirm
 - utter_option1
@@ -67,6 +72,8 @@ actions:
 
 
 templates:
+  utter_fallback:
+    - text: "I'm sorry, I don't understand what you mean."
   utter_welcome:
     - text: "Hello! I'm Balu your first TWDE chatbot"
     - text: "Hey there! I'm Balu your first TWDE chatbot"
@@ -111,6 +118,8 @@ templates:
   utter_how_can_i_help:
     - text: "Let me know how I can help!"
     - text: "Let me know what I can do for you!"
+  utter_how_can_i_help_follow_up:
+    - text: "Anything else I can help you with?"
   utter_sick:
     - text: "Sorry to hear that! Get well soon. Unfortunately I can't help you with that."
   utter_sick_help:
@@ -120,7 +129,6 @@ templates:
   utter_leave_annual_total:
     - text: "You have 28 leave days for 2018"
   utter_leave_annual_left:
-    - text: "21 leave days are left for 2018"
     - text: "You have 21 leave days left for 2018"
     - text: "In 2018 you can still take 21 leave days"
   utter_leave_annual_taken:
@@ -139,18 +147,22 @@ templates:
   utter_leave_annual_planned_list_2:
     - text: "- June 10 to June 12"
   utter_leave_annual_cancel:
-    - text: "Would you like to cancel one?"
+    - text: "Which vacation would you like to cancel?"
     - text: "Which leave would you like to cancel?"
-  utter_leave_annual_cancel_expl:
-    - text: "Just type the order number and I'll cancel it for you."
   utter_leave_annual_take:
     - text: "When would you like to take your leave?"
     - text: "When would you like to take some vacation?"
     - text: "Please let me know, when you'd like to take a leave"
+  utter_leave_annual_take_confirm:
+    - text: "Cool, that would be 5 leave days from July 2 to 6. Did you check with your team?"
+  utter_leave_annual_do_confirm:
+    - text: "Ok, please make sure to talk to your team first. If you've done so, I'm happy to help."
+  utter_leave_annual_booked:
+    - text: "Great, I booked the following leave days for you: July 2 to 6."
   utter_public_holidays:
     - text: "Next public holiday is on may 1"
   utter_confirm:
-    - text: "On it"
+    - text: "Done!"
   utter_option1:
     - text: "Cool, you'd like to cancel your leave from May 2 to May 4. Right?"
   utter_option2:

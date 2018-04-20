@@ -108,12 +108,38 @@
 ## leave_annual_cancel
 * leave_annual_cancel
   - utter_leave_annual_cancel
-  - utter_leave_annual_planned_list
+  - utter_leave_annual_planned_list_1
+  - utter_leave_annual_planned_list_2
+
+## leave_annual_cancel
+* leave_annual_cancel
+  - utter_leave_annual_cancel
+  - utter_leave_annual_planned_list_1
+  - utter_leave_annual_planned_list_2
 
 ## leave_annual_take
 * leave_annual_take
   - utter_leave_annual_left
   - utter_leave_annual_take
+* leave_annual_take_date
+  - utter_leave_annual_take_confirm
+* confirm
+  - utter_leave_annual_booked
+  - utter_how_can_i_help_follow_up
+* deny
+  - utter_deny_bye
+
+## leave_annual_take
+* leave_annual_take
+  - utter_leave_annual_left
+  - utter_leave_annual_take
+* leave_annual_take_date
+  - utter_leave_annual_take_confirm
+* deny
+  - utter_leave_annual_do_confirm
+  - utter_how_can_i_help_follow_up
+* deny
+  - utter_deny_bye
 
 ## public_holidays
 * public_holidays
@@ -122,6 +148,7 @@
 ## confirm
 * confirm
   - utter_confirm
+  - utter_how_can_i_help_follow_up
 
 ## option1
 * option1
