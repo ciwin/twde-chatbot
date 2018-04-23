@@ -1,13 +1,12 @@
 import functools
 import logging
 
-from flask import request, json
 import jsonschema
+from flask import request, json
 
-from chatbot.config import CONF
-from chatbot.actions import backend_api
 from chatbot import session
-
+from chatbot.actions import backend_api
+from chatbot.config import CONF
 
 logger = logging.getLogger(__name__)
 
@@ -24,6 +23,7 @@ def is_json(func):
         if not request.get_json():
             return get_error_response('request is not JSON')
         return func(*args, **kw)
+
     return _is_json
 
 
@@ -37,6 +37,7 @@ def authenticate(func):
         if event.get('token') != CONF.get_value("hangouts-api-key"):
             return get_error_response('Wrong token', 401)
         return func(*args, **kw)
+
     return _auth
 
 
@@ -51,7 +52,9 @@ def validate(schema):
                 response = get_error_response(str(ex))
                 return response
             return func(*args, **kw)
+
         return _validate
+
     return _inner
 
 
@@ -65,8 +68,12 @@ def fill_session(func):
             sender_id = body['message']['thread']['name']
 
             if not session.have_employee_id(sender_id):
-                employee_info = backend_api.get_employee(email)
-                session.set_employee(sender_id, employee_info)
+                try:
+                    employee_info = backend_api.get_employee(email)
+                except backend_api.BackendError as ex:
+                    logger.warning("fail to fetch employee information from backend: %s", ex)
+                else:
+                    session.set_employee(sender_id, employee_info)
 
         return func(*args, **kw)
 

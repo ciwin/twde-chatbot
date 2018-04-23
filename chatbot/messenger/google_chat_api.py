@@ -3,8 +3,8 @@ import logging
 from flask import Flask, request, json
 
 from chatbot.config import CONF
-from chatbot.nlu import dialog
 from chatbot.messenger import middlewares
+from chatbot.nlu import dialog
 
 logger = logging.getLogger(__name__)
 app = Flask(__name__)
@@ -30,7 +30,7 @@ SCHEMA = {
                     "type": "object",
                     "required": ["email"],
                     "properties": {
-                        "email": {"type": "string"},
+                        "email": {"type": "string", "minLength": 1},
                     },
                 },
                 "thread": {
