@@ -3,8 +3,9 @@ import logging
 
 from rasa_core.actions import Action
 
-from chatbot.actions import leave_backend_api, backend_api
+from chatbot.actions import leave_backend_api
 from chatbot.actions.errors import InvalidUserError, BackendError
+from chatbot import session
 
 GERMANY = ['Berlin', 'Hamburg', 'Cologne', 'Munich']
 logger = logging.getLogger(__name__)
@@ -33,8 +34,10 @@ class ActionLeaveAnnualTotal(Action):
     def run(self, dispatcher, tracker, domain):
         try:
             current_year = datetime.datetime.now().year
-            employee = backend_api.get_employee(tracker.get_slot('email'))
-            total_annual_leaves = get_annual_leave_total(employee, current_year)
+
+            employee_info = session.get_employee(tracker.sender_id)
+
+            total_annual_leaves = get_annual_leave_total(employee_info, current_year)
             dispatcher.utter_template(
                 "utter_leave_annual_total",
                 annual_total=total_annual_leaves,

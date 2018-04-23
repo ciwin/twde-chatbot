@@ -23,9 +23,16 @@ SCHEMA = {
         "token": {"type": "string"},
         "message": {
             "type": "object",
-            "required": ["text", "thread"],
+            "required": ["text", "thread", "sender"],
             "properties": {
                 "text": {"type": "string"},
+                "sender": {
+                    "type": "object",
+                    "required": ["email"],
+                    "properties": {
+                        "email": {"type": "string"},
+                    },
+                },
                 "thread": {
                     "type": "object",
                     "required": ["name"],
@@ -43,6 +50,7 @@ SCHEMA = {
 @middlewares.is_json
 @middlewares.authenticate
 @middlewares.validate(SCHEMA)
+@middlewares.fill_session
 def on_event():
     """Handles an event from Hangouts Chat."""
     event = request.get_json()

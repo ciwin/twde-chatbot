@@ -5,6 +5,8 @@ from flask import request, json
 import jsonschema
 
 from chatbot.config import CONF
+from chatbot.actions import backend_api
+from chatbot import session
 
 
 logger = logging.getLogger(__name__)
@@ -50,4 +52,22 @@ def validate(schema):
                 return response
             return func(*args, **kw)
         return _validate
+    return _inner
+
+
+def fill_session(func):
+    @functools.wraps(func)
+    def _inner(*args, **kw):
+        body = request.get_json()
+
+        if 'message' in body:
+            email = body['message']['sender']['email']
+            sender_id = body['message']['thread']['name']
+
+            if not session.have_employee_id(sender_id):
+                employee_info = backend_api.get_employee(email)
+                session.set_employee(sender_id, employee_info)
+
+        return func(*args, **kw)
+
     return _inner
