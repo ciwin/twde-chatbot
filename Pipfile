@@ -14,11 +14,11 @@ chatbot = {path = "."}
 requests = "*"
 jsonschema = "*"
 redis = "*"
+chatbase = {git = "https://github.com/google/chatbase-python"}
 
 [dev-packages]
 pytest = "*"
 pytest-mock = "*"
-"e1839a8" = {path = ".", editable = true}
 mockredispy = "*"
 fakeredis = "*"
 

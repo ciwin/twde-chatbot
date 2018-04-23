@@ -16,5 +16,8 @@
   "backend-api-token": "secret-token",
   "backend-api-base-url": "http://google.de/",
   "redis-url": "redis://localhost",
-  "redis-expire-time": 3600
+  "redis-expire-time": 3600,
+  "chatbase-api-key": "secret-chatbase-key",
+  "analytics-send-period": 300,
+  "warming-up-agent-interval": 5
 }

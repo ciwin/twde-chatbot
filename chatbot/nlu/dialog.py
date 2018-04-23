@@ -8,6 +8,7 @@ from rasa_core.train import train_dialogue_model
 
 from chatbot.config import CONF
 from chatbot.nlu import intent_classificator
+from chatbot import analytics
 
 logger = logging.getLogger(__name__)
 
@@ -33,13 +34,25 @@ def load_agent(intent_classificator):
 def handle_message_input(context_agent, user_input, sender_id=None):
     responses = context_agent.handle_message(user_input, sender_id=sender_id)
 
-    # FIXME: We chose the first one, not the best heuristic.
-    # FIXME: Hardcoded fallback message.
-    return '\n'.join(responses) if responses else 'Sorry I cannot understand!'
+    if responses:
+        parsed_data = context_agent.interpreter.parse(user_input)
+        analytics.send_user_message(user_input, parsed_data.get('intent', {})['name'], sender_id)
+    else:
+        analytics.send_not_handled_message(user_input, sender_id)
+
+    reply = '\n'.join(responses) if responses else get_fallback_message(context_agent)
+    analytics.send_bot_message(reply, sender_id=sender_id)
+    return reply
 
 
-def get_welcome_message(context_agent):
-    return context_agent.domain.random_template_for('utter_welcome')['text']
+def get_welcome_message(context_agent, sender_id=None):
+    msg = context_agent.domain.random_template_for('utter_welcome')['text']
+    analytics.send_bot_message(msg, sender_id=sender_id)
+    return msg
+
+
+def get_fallback_message(context_agent):
+    return context_agent.domain.random_template_for('utter_fallback')['text']
 
 
 def train_dialog():

@@ -8,6 +8,8 @@ from werkzeug.contrib.profiler import ProfilerMiddleware
 
 from chatbot.messenger import google_chat_api
 from chatbot.nlu import dialog
+from chatbot.config import CONF
+from chatbot.analytics import start_batch_sender
 
 
 logger = logging.getLogger(__name__)
@@ -20,13 +22,16 @@ def _warmup():
         while 1:
             logger.debug("loading agent ...")
             dialog.get_agent()
-            time.sleep(5)
+
+            interval = int(CONF.get_value('warming-up-agent-interval'))
+            time.sleep(interval)
     t = threading.Thread(target=background_task)
     t.daemon = True
     t.start()
 
 
 _warmup()
+start_batch_sender()
 app = google_chat_api.app
 if os.getenv('FLASK_PROFILE'):
     app.config['PROFILE'] = True
