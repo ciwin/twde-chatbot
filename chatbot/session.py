@@ -20,7 +20,8 @@ def _get_key(id):
 
 def get_employee(id):
     val = _get_client().get(_get_key(id))
-    return json.loads(val)
+    if val:
+        return json.loads(val)
 
 
 def set_employee(id, info):
@@ -28,5 +29,5 @@ def set_employee(id, info):
     _get_client().set(_get_key(id), info, ex=CONF.get_value('redis-expire-time'))
 
 
-def have_employee_id(id):
+def employee_exists(id):
     return _get_client().exists(_get_key(id))

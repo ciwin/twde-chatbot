@@ -72,7 +72,7 @@ def fill_session(func):
             email = body['message']['sender']['email']
             sender_id = body['message']['thread']['name']
 
-            if not session.have_employee_id(sender_id):
+            if not session.employee_exists(sender_id):
                 try:
                     employee_info = backend_api.get_employee(email)
                 except BackendError as ex:
