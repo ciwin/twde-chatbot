@@ -6,6 +6,7 @@ from flask import request, json
 
 from chatbot import session
 from chatbot.actions import backend_api
+from chatbot.actions.errors import BackendError
 from chatbot.config import CONF
 
 logger = logging.getLogger(__name__)
@@ -58,6 +59,10 @@ def validate(schema):
     return _inner
 
 
+def filter_employee_info(employee_info):
+    return {k: employee_info[k] for k in ['employeeId', 'homeOffice']}
+
+
 def fill_session(func):
     @functools.wraps(func)
     def _inner(*args, **kw):
@@ -70,10 +75,10 @@ def fill_session(func):
             if not session.have_employee_id(sender_id):
                 try:
                     employee_info = backend_api.get_employee(email)
-                except backend_api.BackendError as ex:
+                except BackendError as ex:
                     logger.warning("fail to fetch employee information from backend: %s", ex)
                 else:
-                    session.set_employee(sender_id, employee_info)
+                    session.set_employee(sender_id, filter_employee_info(employee_info))
 
         return func(*args, **kw)
 

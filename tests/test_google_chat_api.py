@@ -38,7 +38,8 @@ with google_chat_api.app.test_client() as client:
         handle_message_mock.return_value = "I was called"
 
         get_employee_mock = mocker.patch('chatbot.actions.backend_api.get_employee')
-        get_employee_mock.return_value = {'employeeId': '123'}
+        get_employee_mock.return_value = {'employeeId': 'foobar', 'homeOffice': {'name': 'FooBar'},
+                                          'preferredName': 'foo', 'unnecessary': 42}
 
         redis_mock = mocker.patch('redis.from_url')
         redis_mock.return_value = fakeredis.FakeStrictRedis()
@@ -96,7 +97,8 @@ with google_chat_api.app.test_client() as client:
         handle_message_mock.return_value = "I was called"
 
         get_employee_mock = mocker.patch('chatbot.actions.backend_api.get_employee')
-        get_employee_mock.return_value = {'employeeId': '123'}
+        get_employee_mock.return_value = {'employeeId': 'foobar', 'homeOffice': {'name': 'FooBar'},
+                                          'preferredName': 'foo', 'unnecessary': 42}
 
         redis_mock = mocker.patch('redis.from_url')
         redis_mock.return_value = fakeredis.FakeStrictRedis()
@@ -110,7 +112,7 @@ with google_chat_api.app.test_client() as client:
                     'email': 'foo@example.com',
                 },
                 'thread': {
-                    'name': 'thread-name',
+                    'name': 'senderId42',
                 }
             },
         }
@@ -123,4 +125,4 @@ with google_chat_api.app.test_client() as client:
         parsed_response = json.loads(response.data)
         assert "I was called" == parsed_response["text"]
 
-        assert {'employeeId': '123'} == session.get_employee('thread-name')
+        assert {'employeeId': 'foobar', 'homeOffice': {'name': 'FooBar'}} == session.get_employee('senderId42')
