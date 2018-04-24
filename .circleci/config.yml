@@ -13,9 +13,6 @@ jobs:
             - v1-cache-{{ checksum "Pipfile.lock" }}
             - v1-cache-
       - run:
-          name: Install pip9, since pip10 have a regression https://github.com/pypa/pip/issues/5251
-          command: pipenv install pip==9.0.3
-      - run:
           name: Install dependencies
           command: pipenv sync --dev
       - save_cache:
