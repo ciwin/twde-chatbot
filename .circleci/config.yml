@@ -10,8 +10,8 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - cache-{{ checksum "Pipfile.lock" }}
-            - cache-
+            - v1-cache-{{ checksum "Pipfile.lock" }}
+            - v1-cache-
       - run:
           name: Install dependencies
           command: pipenv sync --dev
@@ -19,7 +19,7 @@ jobs:
           key: cache-{{ checksum "Pipfile.lock" }}
           paths:
             - ~/.local
-            - ~/.cache
+            - ~/.v1-cache
       - run:
           name: run tests
           command: |

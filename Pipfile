@@ -14,11 +14,12 @@ chatbot = {path = "."}
 requests = "*"
 jsonschema = "*"
 redis = "*"
+chatbase = {git = "https://github.com/google/chatbase-python"}
+pip = "==9.0.3"  # pip10 have a regression https://github.com/pypa/pip/issues/5251 that stop us from install from github.
 
 [dev-packages]
 pytest = "*"
 pytest-mock = "*"
-"e1839a8" = {path = ".", editable = true}
 mockredispy = "*"
 fakeredis = "*"
 
