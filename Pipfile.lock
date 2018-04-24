@@ -2,6 +2,7 @@
     "_meta": {
         "hash": {
             "sha256": "5daabb2a5690279739939653868b41ab941ed2ecd2ffe4d4136240ab3819c58a"
+            "sha256": "c6c9e1a8a08c84c9719ddf37300cf5e3c8dad0c09d7cd91b9fc6a0d3b410ed99"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -104,9 +105,7 @@
             "git": "https://github.com/google/chatbase-python"
         },
         "chatbot": {
-            "editable": true,
-            "git": "https://github.com/ThoughtWorksInc/twde-chatbot.git",
-            "ref": "26f8933e01941451b3cefe1b06ef540f2d77982f"
+            "path": "."
         },
         "click": {
             "hashes": [
@@ -205,20 +204,6 @@
                 "sha256:d2d587dde06f99545fb13a383d2cd336a8ff1f359c5839ce3a64c917d10c029f"
             ],
             "version": "==0.2.3"
-        },
-        "ephem": {
-            "hashes": [
-                "sha256:3884de133045d2f12784ef456c0f5557139a247b88d2c26097f7bd420803ed7f",
-                "sha256:4bcd9899863ef04f4e75d894a6973dce4b4d16baeb8c2e96fb66bd3c677491a2",
-                "sha256:6a2e445ba3a1e6bd9d6dedcafa4dda83957f4f9b0efac3d642974c55faebcfa4",
-                "sha256:7a4c82b1def2893e02aec0394f108d24adb17bd7b0ca6f4bc78eb7120c0212ac",
-                "sha256:7af6d726c3d903087c284e3dd72c5cda2b5438e84f2d564314469f0fb7494fab",
-                "sha256:9ea5c8d9b407fe151cece238d13e3ca12114ac5c73269ef6541bf65b208048a3",
-                "sha256:bb3e04e981352ab8c6049325533944b882d9be1bf13c19be5d85b918ba75723f",
-                "sha256:f19a380f83f36e56e6e499bf673a43c42ed28c766c9cafb4326b5defcca0a116",
-                "sha256:fd15421938cac27cd87c3b73c81e4695ab7a22cd37d43e05090140f5d48392d8"
-            ],
-            "version": "==3.7.6.0"
         },
         "fakeredis": {
             "hashes": [
@@ -516,13 +501,6 @@
             ],
             "version": "==17.10.0"
         },
-        "lunardate": {
-            "hashes": [
-                "sha256:975425599f66248ed1c4df2fcd74db00398fa112c9aaed032e369f43666cfd1a",
-                "sha256:e303d5defc6fa5509536b340fc6f61b3588d7857991288a449bd4e0cacd42d53"
-            ],
-            "version": "==0.1.5"
-        },
         "markdown": {
             "hashes": [
                 "sha256:9ba587db9daee7ec761cfc656272be6aabe2ed300fece21208e4aab2e457bc8f",
@@ -711,18 +689,20 @@
             ],
             "version": "==3.5.2.post1"
         },
-        "pycalverter": {
-            "hashes": [
-                "sha256:91e26c5d06dfe1495e5b946a724ae691e57ea634ee4a9529a7952b837c041111"
-            ],
-            "version": "==1.6.1"
-        },
         "pygments": {
             "hashes": [
                 "sha256:78f3f434bcc5d6ee09020f92ba487f95ba50f1e3ef83ae96b9d5ffa1bab25c5d",
                 "sha256:dbae1046def0efb574852fab9e90209b23f556367b5a320c0bcb871c77c3e8cc"
             ],
             "version": "==2.2.0"
+        },
+        "pyjwt": {
+            "hashes": [
+                "sha256:bca523ef95586d3a8a5be2da766fe6f82754acba27689c984e28e77a12174593",
+                "sha256:dacba5786fe3bf1a0ae8673874e29f9ac497860955c501289c63b15d3daae63a"
+            ],
+            "index": "pypi",
+            "version": "==1.6.1"
         },
         "pykwalify": {
             "hashes": [
@@ -1175,13 +1155,6 @@
             ],
             "version": "==0.31.0"
         },
-        "workalendar": {
-            "hashes": [
-                "sha256:44e42942dac2dd46fa84a82f61224dbf449d613fbfe6ef9172b1bd1996d11fdc"
-            ],
-            "index": "pypi",
-            "version": "==2.4.0"
-        },
         "wrapt": {
             "hashes": [
                 "sha256:d4d560d479f2c21e1b5443bbd15fe7ec4b37fe7e53d335d3b9b0a7b1226fe3c6"
@@ -1217,14 +1190,6 @@
                 "sha256:f3555b65aa65dc5157ac12d5d79a6adde049d90a056f7c99916a80282e43a881"
             ],
             "version": "==0.10.2"
-        },
-        "freezegun": {
-            "hashes": [
-                "sha256:703caac155dcaad61f78de4cb0666dca778d854dfb90b3699930adee0559a622",
-                "sha256:94c59d69bb99c9ec3ca5a3adb41930d3ea09d2a9756c23a02d89fa75646e78dd"
-            ],
-            "index": "pypi",
-            "version": "==0.3.10"
         },
         "mockredispy": {
             "hashes": [
@@ -1271,13 +1236,6 @@
             ],
             "index": "pypi",
             "version": "==1.9.0"
-        },
-        "python-dateutil": {
-            "hashes": [
-                "sha256:3220490fb9741e2342e1cf29a503394fdac874bc39568288717ee67047ff29df",
-                "sha256:9d8074be4c993fbe4947878ce593052f71dac82932a677d49194d8ce9778002e"
-            ],
-            "version": "==2.7.2"
         },
         "redis": {
             "hashes": [

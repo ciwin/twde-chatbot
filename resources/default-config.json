@@ -19,5 +19,7 @@
   "redis-expire-time": 3600,
   "chatbase-api-key": "secret-chatbase-key",
   "analytics-send-period": 300,
-  "warming-up-agent-interval": 5
+  "warming-up-agent-interval": 5,
+  "timeoff-api-key": "secret-api-key",
+  "timeoff-api-url": "https://localhost:5000/api/leaveentitlement"
 }

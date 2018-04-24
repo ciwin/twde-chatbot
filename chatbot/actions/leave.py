@@ -23,8 +23,8 @@ def valid_user(employee):
 
 
 def get_annual_leave_total(employee, year):
-    leave_adjustments = leave_backend_api.get_leave_adjustment(employee.get('employeeId'), year)
-    return ANNUAL_BASE_LEAVE + leave_adjustments
+    leave_details = leave_backend_api.get_leave_entitlement(employee, year)
+    return leave_details.get('leaveEntitlement')
 
 
 class ActionLeaveAnnualTotal(Action):
