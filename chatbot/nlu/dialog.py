@@ -6,12 +6,11 @@ from rasa_core.policies.keras_policy import KerasPolicy
 from rasa_core.policies.memoization import MemoizationPolicy
 from rasa_core.train import train_dialogue_model
 
+from chatbot import analytics
 from chatbot.config import CONF
 from chatbot.nlu import intent_classificator
-from chatbot import analytics
 
 logger = logging.getLogger(__name__)
-
 
 _AGENT = None
 _AGENT_LOCK = threading.RLock()
@@ -26,9 +25,9 @@ def get_agent():
     return _AGENT
 
 
-def load_agent(intent_classificator):
+def load_agent(classificator):
     logger.info('loading context model from: %s', CONF.get_value('dialog-model-path'))
-    return Agent.load(CONF.get_value('dialog-model-path'), interpreter=intent_classificator)
+    return Agent.load(CONF.get_value('dialog-model-path'), interpreter=classificator)
 
 
 def handle_message_input(context_agent, user_input, sender_id=None):
@@ -60,9 +59,9 @@ def train_dialog():
                          CONF.get_value('dialog-model-path'))
 
 
-def train_dialog_online(intent_classificator, input_channel):
+def train_dialog_online(classificator, input_channel):
     agent = Agent(CONF.get_value('domain-file'), policies=[MemoizationPolicy(), KerasPolicy()],
-                  interpreter=intent_classificator)
+                  interpreter=classificator)
 
     agent.train_online(CONF.get_value('stories-file'),
                        input_channel=input_channel,
