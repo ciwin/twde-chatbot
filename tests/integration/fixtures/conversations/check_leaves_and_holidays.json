@@ -1,0 +1,12 @@
+{
+  "how many leave days do i have left for this year?": {
+    "templates": [
+      "utter_leave_annual_left"
+    ]
+  },
+  "when is the next public holiday?": {
+    "templates": [
+      "utter_public_holidays"
+    ]
+  }
+}

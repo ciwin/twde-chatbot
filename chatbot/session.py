@@ -14,6 +14,11 @@ def _get_client():
     return _CLIENT
 
 
+def _reset_client():
+    global _CLIENT
+    _CLIENT = None
+
+
 def _get_key(id):
     return "chatbot:employee:{}".format(id)
 

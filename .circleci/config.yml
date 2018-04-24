@@ -3,6 +3,7 @@ jobs:
   build:
     docker:
       - image: circleci/python:3.6.5-stretch-browsers
+      - image: redis
 
     working_directory: ~/repo
 

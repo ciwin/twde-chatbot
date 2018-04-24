@@ -1,0 +1,29 @@
+{
+  "how are you?": {
+    "templates": [
+      "utter_how_are_you"
+    ]
+  },
+  "could i book some vacation?": {
+    "templates": [
+      "utter_leave_annual_left",
+      "utter_leave_annual_take"
+    ]
+  },
+  "take leave first week of July": {
+    "templates": [
+      "utter_leave_annual_take_confirm"
+    ]
+  },
+  "yes": {
+    "templates": [
+      "utter_leave_annual_booked",
+      "utter_how_can_i_help_follow_up"
+    ]
+  },
+  "No": {
+    "templates": [
+      "utter_deny_bye"
+    ]
+  }
+}
