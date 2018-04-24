@@ -1,10 +1,10 @@
-import bisect
 import datetime
 import itertools
 import logging
 
 from rasa_core.actions import Action
 from workalendar.registry import registry
+
 from chatbot import session
 from chatbot.actions import leave_backend_api
 
