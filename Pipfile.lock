@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "b70f6d80c9c3fb529642a61e46b9d313c63e1d2ea9c63a50a13c4ca767ba3c46"
+            "sha256": "c6c9e1a8a08c84c9719ddf37300cf5e3c8dad0c09d7cd91b9fc6a0d3b410ed99"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -104,7 +104,9 @@
             "git": "https://github.com/google/chatbase-python"
         },
         "chatbot": {
-            "path": "."
+            "editable": true,
+            "git": "git@github.com:ThoughtWorksInc/twde-chatbot.git",
+            "ref": "595cb5cbbd8c9ec74e7f16a82185a183dc51b45b"
         },
         "click": {
             "hashes": [
@@ -694,6 +696,14 @@
                 "sha256:dbae1046def0efb574852fab9e90209b23f556367b5a320c0bcb871c77c3e8cc"
             ],
             "version": "==2.2.0"
+        },
+        "pyjwt": {
+            "hashes": [
+                "sha256:bca523ef95586d3a8a5be2da766fe6f82754acba27689c984e28e77a12174593",
+                "sha256:dacba5786fe3bf1a0ae8673874e29f9ac497860955c501289c63b15d3daae63a"
+            ],
+            "index": "pypi",
+            "version": "==1.6.1"
         },
         "pykwalify": {
             "hashes": [
