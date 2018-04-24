@@ -152,7 +152,7 @@
 
 ## public_holidays
 * public_holidays
-  - utter_public_holidays
+  - action_next_public_holiday
 
 ## confirm
 * confirm

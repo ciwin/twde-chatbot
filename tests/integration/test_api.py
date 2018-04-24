@@ -1,7 +1,10 @@
+import datetime
 import itertools
 import json
 import os
 import subprocess
+
+from freezegun import freeze_time
 
 from chatbot.cli import train
 from chatbot.messenger import google_chat_api
@@ -13,6 +16,9 @@ google_chat_api.app.testing = True
 
 
 def teardown_module(_):
+    from chatbot.session import _get_client
+    _get_client().flushdb()
+
     from chatbot.session import _reset_client
     _reset_client()
 
@@ -47,7 +53,7 @@ def get_body(message, func_name):
 
 def mock_external_systems(mocker):
     get_employee_mock = mocker.patch('chatbot.actions.backend_api.get_employee')
-    get_employee_mock.return_value = {'employeeId': 'foobar', 'homeOffice': {'name': 'FooBar'},
+    get_employee_mock.return_value = {'employeeId': 'foobar', 'homeOffice': {'name': 'Berlin'},
                                       'preferredName': 'foo', 'unnecessary': 42}
 
 
@@ -56,6 +62,7 @@ def get_templates(name):
     return [t['text'] for t in agent.domain.templates[name]]
 
 
+@freeze_time("2018-04-24")
 def conversation_tester(mocking_system, conversational_file):
     mock_external_systems(mocking_system)
 
@@ -73,6 +80,9 @@ def conversation_tester(mocking_system, conversational_file):
 
         messages = [get_templates(name) for name in output['templates']]
         expected_responses = ["\n".join(opts) for opts in itertools.product(*messages)]
+
+        # Fill placeholders.
+        expected_responses = [resp.format(date=datetime.date(2018, 5, 1).strftime("%d %B %Y")) for resp in expected_responses]
 
         assert parsed_response["text"] in expected_responses, "fails for '{}'".format(input)
 

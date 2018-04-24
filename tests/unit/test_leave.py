@@ -1,3 +1,5 @@
+import datetime
+
 from chatbot.actions import leave
 
 
@@ -17,3 +19,14 @@ def test_annual_leave_total(mocker):
 
     assert 31 == leave.get_annual_leave_total({'employeeId': '42', 'homeOffice': {'name': 'Berlin'}}, 2018)
     mocked_leave_api.assert_called_with('42', 2018)
+
+
+def test_next_public_holiday():
+    assert datetime.date(2018, 5, 1) == leave.next_public_holiday(datetime.date(2018, 4, 24),
+                                                                  {'employeeId': 42, 'homeOffice': {'name': 'Berlin'}})
+
+    assert datetime.date(2018, 5, 10) == leave.next_public_holiday(datetime.date(2018, 5, 1),
+                                                                   {'employeeId': 42, 'homeOffice': {'name': 'Berlin'}})
+
+    assert datetime.date(2019, 1, 1) == leave.next_public_holiday(datetime.date(2018, 12, 31),
+                                                                  {'employeeId': 42, 'homeOffice': {'name': 'Berlin'}})

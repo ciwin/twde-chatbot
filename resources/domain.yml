@@ -74,6 +74,7 @@ actions:
 - utter_insult_follow_up
 - utter_random
 - chatbot.actions.leave.ActionLeaveAnnualTotal
+- chatbot.actions.leave.ActionPublicHolidays
 
 
 templates:
@@ -171,7 +172,7 @@ templates:
   utter_leave_annual_booked:
     - text: "Great, I booked the following leave days for you: July 2 to 6."
   utter_public_holidays:
-    - text: "Next public holiday is on may 1"
+    - text: "Next public holiday is on {date}"
   utter_confirm:
     - text: "Done!"
   utter_option1:
