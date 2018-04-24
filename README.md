@@ -54,6 +54,12 @@ To reduce logging verbosity set the environment variable LOGLEVEL to error, for 
 LOGLEVEL=ERROR pipenv run chatbot/cli/console.py
 ```
 
+The bot uses a redis db internally so you would need a running redis db.
+You can for example just start one with docker:
+```bash
+docker run --publish 6379:6379 --name redis -d redis
+```
+
 ## Test
 
 To run tests use:
