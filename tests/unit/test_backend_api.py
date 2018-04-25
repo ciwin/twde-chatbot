@@ -2,15 +2,7 @@ import pytest
 
 from chatbot.actions import backend_api
 from chatbot.actions.errors import BackendError
-
-
-class FakeResponse(object):
-    def __init__(self, status_code, json_data):
-        self.status_code = status_code
-        self.json_data = json_data
-
-    def json(self):
-        return self.json_data
+from tests.helpers import FakeResponse
 
 
 def test_get_employee(mocker):

@@ -20,6 +20,6 @@
   "chatbase-api-key": "secret-chatbase-key",
   "analytics-send-period": 300,
   "warming-up-agent-interval": 5,
-  "timeoff-api-key": "secret-api-key",
-  "timeoff-api-url": "https://localhost:5000/api/leaveentitlement"
+  "leave-api-key": "secret-api-key",
+  "leave-api-url": "https://localhost:5000/api/"
 }

@@ -7,6 +7,7 @@ from workalendar.registry import registry
 
 from chatbot import session
 from chatbot.actions import leave_backend_api
+from chatbot.actions.errors import BackendError
 
 logger = logging.getLogger(__name__)
 GERMANY_OFFICES = {
@@ -15,7 +16,6 @@ GERMANY_OFFICES = {
     'Cologne': 'DE-NW',
     'Munich': 'DE-BY',
 }
-ANNUAL_BASE_LEAVE = 28
 
 
 def valid_user(employee):
@@ -40,12 +40,16 @@ class ActionLeaveAnnualTotal(Action):
             dispatcher.utter_template("utter_invalid_user")
             return []
 
-        total_annual_leaves = get_annual_leave_total(employee_info, current_year)
-        dispatcher.utter_template(
-            "utter_leave_annual_total",
-            annual_total=total_annual_leaves,
-            this_year=current_year,
-        )
+        try:
+            total_annual_leaves = get_annual_leave_total(employee_info, current_year)
+            dispatcher.utter_template(
+                "utter_leave_annual_total",
+                annual_total=total_annual_leaves,
+                this_year=current_year,
+            )
+        except BackendError as ex:
+            logger.warning("Leave Backend not available %s", ex)
+            dispatcher.utter_template('utter_backend_not_running')
 
         return []
 
