@@ -74,14 +74,14 @@
 
 ## leave_annual_taken
 * leave_annual_taken
-  - utter_leave_annual_taken
+  - action_leave_annual_taken
 * confirm
   - utter_leave_annual_taken_list
   - utter_leave_annual_taken_list_1
 
 ## leave_annual_taken
 * leave_annual_taken
-  - utter_leave_annual_taken
+  - action_leave_annual_taken
 * deny
   - utter_deny
 

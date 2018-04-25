@@ -74,6 +74,7 @@ actions:
 - utter_insult_follow_up
 - utter_random
 - chatbot.actions.leave.ActionLeaveAnnualTotal
+- chatbot.actions.leave.ActionLeaveTaken
 - chatbot.actions.leave.ActionPublicHolidays
 
 
@@ -143,7 +144,7 @@ templates:
     - text: "You have 21 leave days left for 2018"
     - text: "In 2018 you can still take 21 leave days"
   utter_leave_annual_taken:
-    - text: "You have already taken one day of leave. Would you like to see the list of your past days off?"
+    - text: "You have already taken {taken_leaves} day(s) of leave. Would you like to see the list of your past days off?"
   utter_leave_annual_taken_list:
     - text: "Here it is:"
   utter_leave_annual_taken_list_1:

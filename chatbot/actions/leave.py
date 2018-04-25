@@ -112,3 +112,27 @@ class ActionPublicHolidays(Action):
         )
 
         return []
+
+
+class ActionLeaveTaken(Action):
+    def name(self):
+        return 'action_leave_annual_taken'
+
+    def run(self, dispatcher, tracker, domain):
+        current_year = datetime.datetime.now().year
+
+        employee_info = session.get_employee(tracker.sender_id)
+        if not valid_user(employee_info):
+            logger.warning("invalid user: %s:%s", tracker.sender_id, employee_info)
+            dispatcher.utter_template("utter_invalid_user")
+            return []
+
+        try:
+            taken_leaves = get_leaves_taken_(employee_info, current_year)
+            dispatcher.utter_template(
+                "utter_leave_annual_taken",
+                taken_leaves=taken_leaves,
+            )
+        except BackendError as ex:
+            logger.warning("Leave Backend not available %s", ex)
+            dispatcher.utter_template('utter_backend_not_running')
