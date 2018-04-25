@@ -1,22 +1,35 @@
 {
   "name": "twde-chatbot",
-  "scripts": {
-  },
+  "description": "A chatbot for TW-DE",
   "env": {
     "MESSENGER_ENDPOINT": {
       "required": true
     },
     "HANGOUTS_API_KEY": {
       "required": true
+    },
+    "BACKEND_API_BASE_URL": {
+      "required": true
+    },
+    "BACKEND_API_TOKEN": {
+      "required": true
+    },
+    "CHATBASE_API_KEY": {
+      "required": true
     }
+  },
+  "scripts": {
+    "postdeploy": "pipenv run pytest --e2e"
   },
   "formation": {
     "web": {
-      "quantity": 1
+      "quantity": 2,
+      "size": "Performance-L"
     }
   },
   "addons": [
-
+    {"plan": "papertrail:choklad"},
+    {"plan": "heroku-redis:hobby-dev"}
   ],
   "buildpacks": [
     {
