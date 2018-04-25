@@ -1,12 +1,13 @@
 import datetime
 import itertools
 import logging
+from functools import reduce
 
 from rasa_core.actions import Action
 from workalendar.registry import registry
 
 from chatbot import session
-from chatbot.actions import leave_backend_api
+from chatbot.actions import leave_backend_api, backend_api
 from chatbot.actions.errors import BackendError
 
 logger = logging.getLogger(__name__)
@@ -16,6 +17,7 @@ GERMANY_OFFICES = {
     'Cologne': 'DE-NW',
     'Munich': 'DE-BY',
 }
+VALID_LEAVES = ['Annual Leave', 'Personal Development Leave']
 
 
 def valid_user(employee):
@@ -25,6 +27,32 @@ def valid_user(employee):
 def get_annual_leave_total(employee, year):
     leave_details = leave_backend_api.get_leave_entitlement(employee, year)
     return leave_details.get('leaveEntitlement')
+
+
+def _leave_is_within_year(leave, year):
+    start_within_year = datetime.datetime.strptime(leave['period']['startsOn'], '%d-%m-%Y').year == year
+    end_within_year = datetime.datetime.strptime(leave['period']['endsOn'], '%d-%m-%Y').year == year
+    is_valid_leave = leave['type'] in VALID_LEAVES
+    return is_valid_leave and (start_within_year or end_within_year)
+
+
+def _leave_duration_days(leave, year):
+    start = datetime.datetime.strptime(leave['period']['startsOn'], '%d-%m-%Y')
+    if start.year < year:
+        start = datetime.datetime(year, 1, 1)
+
+    end = datetime.datetime.strptime(leave['period']['endsOn'], '%d-%m-%Y')
+    if end.year > year:
+        end = datetime.datetime(year, 12, 31)
+
+    delta = (end - start)
+    return delta.days + 1
+
+
+def get_leaves_taken_(employee, year):
+    valid_leaves = list(filter(lambda leave: _leave_is_within_year(leave, year),
+                               backend_api.get_leaves(employee.get('employeeId'))))
+    return reduce(lambda acc, leave: acc + _leave_duration_days(leave, year), valid_leaves, 0)
 
 
 class ActionLeaveAnnualTotal(Action):
