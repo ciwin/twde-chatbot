@@ -15,7 +15,6 @@ GERMANY_OFFICES = {
     'Cologne': 'DE-NW',
     'Munich': 'DE-BY',
 }
-ANNUAL_BASE_LEAVE = 28
 
 
 def valid_user(employee):

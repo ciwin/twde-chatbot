@@ -1,12 +1,11 @@
-import os
 import datetime
 import itertools
 import json
+import os
 
 from freezegun import freeze_time
 
 from chatbot.nlu import dialog
-
 
 MODULE_PATH = os.path.abspath(os.path.join(__file__, '..'))
 
@@ -55,3 +54,12 @@ def conversation_tester(client, conversational_file):
 def get_templates(name):
     agent = dialog.get_agent()
     return [t['text'] for t in agent.domain.templates[name]]
+
+
+class FakeResponse(object):
+    def __init__(self, status_code, json_data):
+        self.status_code = status_code
+        self.json_data = json_data
+
+    def json(self):
+        return self.json_data
