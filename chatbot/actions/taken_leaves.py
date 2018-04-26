@@ -4,7 +4,7 @@ from functools import reduce
 
 from rasa_core.actions import Action
 
-from chatbot.actions import leave
+from chatbot.actions import employee
 from chatbot.backend import backend_api
 from chatbot.backend.errors import BackendError
 
@@ -43,7 +43,7 @@ class ActionLeaveTaken(Action):
         return 'action_leave_annual_taken'
 
     def run(self, dispatcher, tracker, domain):
-        employee_info = leave.get_employee(tracker.sender_id, dispatcher)
+        employee_info = employee.get_employee(tracker.sender_id, dispatcher)
         if not employee_info:
             return []
 
