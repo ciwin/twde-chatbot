@@ -22,13 +22,6 @@ def teardown_module(_):
 def setup_module(_):
     # FIXME: This take quite some time.
     if os.getenv('RUN_TRAINING') != 'n':
-        commands = [
-            "python -m spacy download en_core_web_md",
-            "python -m spacy link --force en_core_web_md en",
-        ]
-        for cmd in commands:
-            subprocess.call(cmd, shell=True)
-
         train.run()
 
 

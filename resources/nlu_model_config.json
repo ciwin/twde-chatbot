@@ -9,5 +9,7 @@
     "ner_duckling"
   ],
   "path" : "./resources/models/nlu",
-  "data" : "./resources/data/nlu.md"
+  "data" : "./resources/data/nlu.md",
+  "pipeline": "spacy_sklearn",
+  "language": "en_core_web_md"
 }

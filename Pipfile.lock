@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "2127c57db101e062684205426c831c3a7532e6099346a6add1a7b05e38dd951a"
+            "sha256": "7cb2ec5ccb3a7dfbc5b3675f0548a38ef8c3d3b8b533d99e3d324bc3a132c079"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -73,17 +73,17 @@
         },
         "boto3": {
             "hashes": [
-                "sha256:30879b3292f3e7766cf086e6e7595f751ffe1cf8fdba5a5fcd848571a4cff455",
-                "sha256:3cdf1f2c132c4bbfd3bfaaf9b936f5a66c0916fefbd1110ad1362dad8fb87796"
+                "sha256:bf80757e3c43be266c2aba2bc0943400c594dd240ce0a237d24dd63c9869bd46",
+                "sha256:d3253cf5d4690d67fe6866b5dd7810e6dbfa58fea4cb5d31c79c796688257ef0"
             ],
-            "version": "==1.7.8"
+            "version": "==1.7.9"
         },
         "botocore": {
             "hashes": [
-                "sha256:c29c040a979ff598a9635977d4e2f683a0b5dc920246df9e02374741e04163a9",
-                "sha256:fa2c9c1fb5872959cdcdf6e7a697dca5eb729698409c717a92d328a10bffbfbb"
+                "sha256:b0930e2d0e85ada3939a9cf52b1cdcd03d9b32a10a7598210a28c102b87074a7",
+                "sha256:bd90115c3edef80150ad53a83728b2d74300ee67abd9f897472feccb82950f8b"
             ],
-            "version": "==1.10.8"
+            "version": "==1.10.9"
         },
         "certifi": {
             "hashes": [
@@ -101,11 +101,6 @@
         },
         "chatbase": {
             "git": "https://github.com/google/chatbase-python"
-        },
-        "chatbot": {
-            "editable": true,
-            "git": "git@github.com:ThoughtWorksInc/twde-chatbot.git",
-            "ref": "cfd093e5212ee5ce91259e6ca6c90c35253db41f"
         },
         "click": {
             "hashes": [
@@ -203,6 +198,9 @@
             ],
             "index": "pypi",
             "version": "==1.8.0"
+        },
+        "en-core-web-md": {
+            "file": "https://github.com/explosion/spacy-models/releases/download/en_core_web_md-2.0.0/en_core_web_md-2.0.0.tar.gz"
         },
         "entrypoints": {
             "hashes": [
@@ -398,10 +396,10 @@
         },
         "humanfriendly": {
             "hashes": [
-                "sha256:30eeab45eb22eb95e1f7d1e2657d381fa9b2b3f28613b942e5935dc90bb5a6c1",
-                "sha256:32f4a21fb3db1f54a3c9f48e2d7e3cc2d9230a066f0e27909de6b191dba3c44b"
+                "sha256:b2492eefd982fc5d442462f890ac7e4a12b292f3157fb8c405cd64acb98088a6",
+                "sha256:c1d4be8881897b76fc56bf1f0b59ed03fada2da994b81a41652833b5dc641ace"
             ],
-            "version": "==4.10"
+            "version": "==4.12"
         },
         "hyperlink": {
             "hashes": [
@@ -1050,10 +1048,10 @@
         },
         "sphinx": {
             "hashes": [
-                "sha256:3aded1a355f662547b8a948131f3faecbc3dea8951847fe0ee4c59689f8220b2",
-                "sha256:9495a1f78c13d0a725ab8104e923e9663519ecc04552aa4a8f684c2da355443d"
+                "sha256:2e7ad92e96eff1b2006cf9f0cdb2743dacbae63755458594e9e8238b0c3dc60b",
+                "sha256:e9b1a75a3eae05dded19c80eb17325be675e0698975baae976df603b6ed1eb10"
             ],
-            "version": "==1.7.3"
+            "version": "==1.7.4"
         },
         "sphinxcontrib-websupport": {
             "hashes": [
@@ -1119,10 +1117,10 @@
         },
         "tqdm": {
             "hashes": [
-                "sha256:597e7526c85df881d51e094360181a84533aede1cb3f5a1cada8bbd4de557efd",
-                "sha256:fe3d218d5b61993d415aa2a9db6dd64c0e4cefb90164ebb197ef3b1d99f531dc"
+                "sha256:22c760d05b2eb6e96a91ad7ed1b03c9c97e6256fb7716410c27c2cb3265a5913",
+                "sha256:d7bfa112a55290a5e2d0c3263a09b17b24240686fbf20d1ef7c5e8edfbb71ad0"
             ],
-            "version": "==4.23.0"
+            "version": "==4.23.1"
         },
         "traitlets": {
             "hashes": [
@@ -1253,10 +1251,6 @@
                 "sha256:c9ce7eccdcb901a2c75d326ea134e0886abfbea5f93e91cc95de9507c0816c44"
             ],
             "version": "==4.1.0"
-        },
-        "pipenv": {
-            "editable": true,
-            "path": "."
         },
         "pluggy": {
             "hashes": [

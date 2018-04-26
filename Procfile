@@ -1,1 +1,1 @@
-web: python -m spacy download en_core_web_md && pipenv run python -m spacy link --force en_core_web_md en  && ./chatbot/cli/train.py && gunicorn --timeout=190 --workers=1 -k=gevent chatbot.cli.server:app
+web: ./chatbot/cli/train.py && gunicorn --timeout=190 --workers=1 -k=gevent chatbot.cli.server:app

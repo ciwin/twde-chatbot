@@ -4,13 +4,12 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-rasa_nlu = "==0.11.0"
 rasa_core = "==0.8.5"
+rasa_nlu = "==0.11.0"
 sklearn_crfsuite = "*"
 spacy = "*" 
 Flask = "*"
 gunicorn = "*"
-chatbot = {path = "."}
 requests = "*"
 jsonschema = "*"
 redis = "*"
@@ -19,9 +18,9 @@ pip = "==9.0.3"  # pip10 have a regression https://github.com/pypa/pip/issues/52
 PyJWT = "*"
 workalendar = "*"
 duckling = "*"
+en_core_web_md = {file = "https://github.com/explosion/spacy-models/releases/download/en_core_web_md-2.0.0/en_core_web_md-2.0.0.tar.gz"}
 
 [dev-packages]
-pipenv = {path = ".", editable = true}
 pytest = "*"
 pytest-mock = "*"
 mockredispy = "*"
