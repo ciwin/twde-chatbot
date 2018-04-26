@@ -1,9 +1,6 @@
-import datetime
 import itertools
 import json
 import os
-
-from freezegun import freeze_time
 
 from chatbot.nlp_models import dialog
 
@@ -26,8 +23,7 @@ def get_body(message, thread_name):
     }
 
 
-@freeze_time("2018-04-24")
-def conversation_tester(client, conversational_file):
+def conversation_tester(client, conversational_file, template_filler):
     with open(os.path.join(MODULE_PATH, 'fixtures/conversations/' + conversational_file)) as fp:
         testcases = json.load(fp)
 
@@ -45,7 +41,7 @@ def conversation_tester(client, conversational_file):
 
         # Fill placeholders.
         expected_responses = [
-            resp.format(date=datetime.date(2018, 5, 1).strftime("%d %B %Y")) for resp in expected_responses
+            resp.format(**template_filler) for resp in expected_responses
         ]
 
         assert parsed_response["text"] in expected_responses, "fails for '{}'".format(input)

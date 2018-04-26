@@ -149,8 +149,8 @@ templates:
   utter_leave_annual_total:
     - text: "You have {annual_total} leave days for {this_year}"
   utter_leave_annual_left:
-    - text: "You have {days} leave day(s) left for {year}"
-    - text: "In {year} you can still take {days} leave day(s)"
+    - text: "You have {days_left} leave day(s) left for {year}"
+    - text: "In {year} you can still take {days_left} leave day(s)"
   utter_leave_annual_taken:
     - text: "You have already taken {taken_leaves} day(s) of leave. Would you like to see the list of your past days off?"
   utter_leave_annual_taken_list:

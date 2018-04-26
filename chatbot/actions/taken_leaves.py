@@ -85,7 +85,7 @@ class ActionLeaveLeft(Action):
             days_left = get_leaves_left(employee_info, current_year)
             dispatcher.utter_template(
                 "utter_leave_annual_left",
-                days=days_left,
+                days_left=days_left,
                 year=current_year
             )
         except BackendError as ex:
