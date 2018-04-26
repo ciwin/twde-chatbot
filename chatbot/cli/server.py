@@ -1,16 +1,15 @@
 #!/usr/bin/env python3
-import os
 import logging
-import time
+import os
 import threading
+import time
 
 from werkzeug.contrib.profiler import ProfilerMiddleware
 
-from chatbot.messenger import google_chat_api
-from chatbot.nlu import dialog
-from chatbot.config import CONF
 from chatbot.analytics import start_batch_sender
-
+from chatbot.config import CONF
+from chatbot.messenger import google_chat_api
+from chatbot.nlp_models import dialog
 
 logger = logging.getLogger(__name__)
 

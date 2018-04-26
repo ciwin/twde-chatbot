@@ -8,7 +8,7 @@ from rasa_core.train import train_dialogue_model
 
 from chatbot import analytics
 from chatbot.config import CONF
-from chatbot.nlu import intent_classificator
+from chatbot.nlp_models import intent_classificator
 
 logger = logging.getLogger(__name__)
 

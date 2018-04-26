@@ -5,7 +5,7 @@ import os
 
 from freezegun import freeze_time
 
-from chatbot.nlu import dialog
+from chatbot.nlp_models import dialog
 
 MODULE_PATH = os.path.abspath(os.path.join(__file__, '..'))
 

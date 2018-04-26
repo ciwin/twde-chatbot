@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-from chatbot.nlu import intent_classificator, dialog
+from chatbot.nlp_models import intent_classificator, dialog
 
 
 def run():

@@ -4,7 +4,7 @@ from flask import Flask, request, json
 
 from chatbot.config import CONF
 from chatbot.messenger import middlewares
-from chatbot.nlu import dialog
+from chatbot.nlp_models import dialog
 
 logger = logging.getLogger(__name__)
 app = Flask(__name__)

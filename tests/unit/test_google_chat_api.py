@@ -33,8 +33,8 @@ with google_chat_api.app.test_client() as client:
 
 
     def test_sending_valid_token(mocker):
-        mocker.patch('chatbot.nlu.dialog.get_agent')
-        handle_message_mock = mocker.patch('chatbot.nlu.dialog.handle_message_input')
+        mocker.patch('chatbot.nlp_models.dialog.get_agent')
+        handle_message_mock = mocker.patch('chatbot.nlp_models.dialog.handle_message_input')
         handle_message_mock.return_value = "I was called"
 
         get_employee_mock = mocker.patch('chatbot.actions.backend_api.get_employee')
@@ -68,8 +68,8 @@ with google_chat_api.app.test_client() as client:
 
 
     def test_get_welcome_message(mocker):
-        mocker.patch('chatbot.nlu.dialog.get_agent')
-        mocked_function = mocker.patch('chatbot.nlu.dialog.get_welcome_message')
+        mocker.patch('chatbot.nlp_models.dialog.get_agent')
+        mocked_function = mocker.patch('chatbot.nlp_models.dialog.get_welcome_message')
         mocked_function.return_value = 'Welcome!'
 
         body = {
@@ -92,8 +92,8 @@ with google_chat_api.app.test_client() as client:
 
 
     def test_employee_sessionized(mocker):
-        mocker.patch('chatbot.nlu.dialog.get_agent')
-        handle_message_mock = mocker.patch('chatbot.nlu.dialog.handle_message_input')
+        mocker.patch('chatbot.nlp_models.dialog.get_agent')
+        handle_message_mock = mocker.patch('chatbot.nlp_models.dialog.handle_message_input')
         handle_message_mock.return_value = "I was called"
 
         get_employee_mock = mocker.patch('chatbot.actions.backend_api.get_employee')

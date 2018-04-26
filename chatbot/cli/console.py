@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from rasa_core.channels.console import ConsoleInputChannel
-from chatbot.nlu import dialog, intent_classificator
+
+from chatbot.nlp_models import dialog, intent_classificator
 
 
 def run():
