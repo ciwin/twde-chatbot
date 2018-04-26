@@ -30,7 +30,7 @@ def setup_module(_):
 
 
 def mock_external_systems(mocker):
-    get_employee_mock = mocker.patch('chatbot.actions.backend_api.get_employee')
+    get_employee_mock = mocker.patch('chatbot.backend.backend_api.get_employee')
     get_employee_mock.return_value = {'employeeId': 'foobar', 'homeOffice': {'name': 'Berlin'},
                                       'preferredName': 'foo', 'unnecessary': 42}
 

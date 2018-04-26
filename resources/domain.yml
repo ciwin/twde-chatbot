@@ -202,5 +202,7 @@ templates:
     - text: ":)"
   utter_invalid_user:
     - text: "Sorry, I cannot find any information about you in our system."
+  utter_unsupported_office:
+    - text: "Sorry, we do not support user from home office {home_office}"
   utter_backend_not_running:
     - text: "Sorry that part of my system is not reachable right now."

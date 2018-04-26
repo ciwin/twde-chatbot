@@ -1,7 +1,7 @@
 import pytest
 
-from chatbot.actions import leave_backend_api
-from chatbot.actions.errors import BackendError
+from chatbot.backend import leave_backend_api
+from chatbot.backend.errors import BackendError
 from tests.helpers import FakeResponse
 
 

@@ -2,9 +2,11 @@ import datetime
 import logging
 from functools import reduce
 
-from chatbot.actions import backend_api
-from chatbot.actions.errors import BackendError
-from chatbot.actions.leave import LeaveBaseAction
+from rasa_core.actions import Action
+
+from chatbot.actions import leave
+from chatbot.backend import backend_api
+from chatbot.backend.errors import BackendError
 
 logger = logging.getLogger(__name__)
 VALID_LEAVES = ['Annual Leave', 'Personal Development Leave']
@@ -36,17 +38,19 @@ def get_leaves_taken(employee, year):
     return reduce(lambda acc, leave: acc + _leave_duration_days(leave, year), valid_leaves, 0)
 
 
-class ActionLeaveTaken(LeaveBaseAction):
+class ActionLeaveTaken(Action):
     def name(self):
         return 'action_leave_annual_taken'
 
     def run(self, dispatcher, tracker, domain):
-        super().run(dispatcher, tracker, domain)
+        employee_info = leave.get_employee(tracker.sender_id, dispatcher)
+        if not employee_info:
+            return []
 
         current_year = datetime.datetime.now().year
 
         try:
-            taken_leaves = get_leaves_taken(self.employee_info, current_year)
+            taken_leaves = get_leaves_taken(employee_info, current_year)
             dispatcher.utter_template(
                 "utter_leave_annual_taken",
                 taken_leaves=taken_leaves,

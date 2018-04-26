@@ -2,7 +2,7 @@ import logging
 
 import requests
 
-from chatbot.actions import middlewares
+from chatbot.backend import middlewares
 from chatbot.config import CONF
 
 logger = logging.getLogger(__name__)

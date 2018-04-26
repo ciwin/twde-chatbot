@@ -37,7 +37,7 @@ with google_chat_api.app.test_client() as client:
         handle_message_mock = mocker.patch('chatbot.nlp_models.dialog.handle_message_input')
         handle_message_mock.return_value = "I was called"
 
-        get_employee_mock = mocker.patch('chatbot.actions.backend_api.get_employee')
+        get_employee_mock = mocker.patch('chatbot.backend.backend_api.get_employee')
         get_employee_mock.return_value = {'employeeId': 'foobar', 'homeOffice': {'name': 'FooBar'},
                                           'preferredName': 'foo', 'unnecessary': 42}
 
@@ -96,7 +96,7 @@ with google_chat_api.app.test_client() as client:
         handle_message_mock = mocker.patch('chatbot.nlp_models.dialog.handle_message_input')
         handle_message_mock.return_value = "I was called"
 
-        get_employee_mock = mocker.patch('chatbot.actions.backend_api.get_employee')
+        get_employee_mock = mocker.patch('chatbot.backend.backend_api.get_employee')
         get_employee_mock.return_value = {'employeeId': 'foobar', 'homeOffice': {'name': 'FooBar'},
                                           'preferredName': 'foo', 'unnecessary': 42}
 

@@ -1,9 +1,11 @@
 import datetime
 import logging
 
-from chatbot.actions import leave_backend_api
-from chatbot.actions.errors import BackendError
-from chatbot.actions.leave import LeaveBaseAction
+from rasa_core.actions import Action
+
+from chatbot.actions import leave
+from chatbot.backend import leave_backend_api
+from chatbot.backend.errors import BackendError
 
 logger = logging.getLogger(__name__)
 
@@ -13,16 +15,19 @@ def get_annual_leave_total(employee, year):
     return leave_details.get('leaveEntitlement')
 
 
-class ActionLeaveAnnualTotal(LeaveBaseAction):
+class ActionLeaveAnnualTotal(Action):
     def name(self):
         return 'action_leave_annual_total'
 
     def run(self, dispatcher, tracker, domain):
-        super().run(dispatcher, tracker, domain)
+        employee_info = leave.get_employee(tracker.sender_id, dispatcher)
+        if not employee_info:
+            return []
+
         current_year = datetime.datetime.now().year
 
         try:
-            total_annual_leaves = get_annual_leave_total(self.employee_info, current_year)
+            total_annual_leaves = get_annual_leave_total(employee_info, current_year)
             dispatcher.utter_template(
                 "utter_leave_annual_total",
                 annual_total=total_annual_leaves,

@@ -2,7 +2,7 @@ from chatbot.actions import taken_leaves
 
 
 def test_leaves_taken_within_same_year(mocker):
-    backend_mock = mocker.patch('chatbot.actions.backend_api.get_leaves')
+    backend_mock = mocker.patch('chatbot.backend.backend_api.get_leaves')
     backend_mock.return_value = [
         {
             "id": "16487",
@@ -40,7 +40,7 @@ def test_leaves_taken_within_same_year(mocker):
 
 
 def test_leaves_taken_with_different_years(mocker):
-    backend_mock = mocker.patch('chatbot.actions.backend_api.get_leaves')
+    backend_mock = mocker.patch('chatbot.backend.backend_api.get_leaves')
     backend_mock.return_value = [
         {
             "id": "16489",

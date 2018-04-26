@@ -1,7 +1,5 @@
 import logging
 
-from rasa_core.actions import Action
-
 from chatbot import session
 
 logger = logging.getLogger(__name__)
@@ -13,20 +11,23 @@ GERMANY_OFFICES = {
 }
 
 
-def valid_user(employee):
+def _valid_user(employee):
     return employee and employee.get('homeOffice').get('name') in GERMANY_OFFICES
 
 
-class LeaveBaseAction(Action):
-    def __init__(self):
-        self.employee_info = None
+def get_employee(sender_id, dispatcher):
+    employee_info = session.get_employee(sender_id)
+    if not employee_info:
+        logger.warning("invalid user: %s:%s", sender_id, employee_info)
+        dispatcher.utter_template("utter_invalid_user")
+        return
 
-    def name(self):
-        pass
+    home_office = employee_info.get('homeOffice').get('name')
+    if home_office not in GERMANY_OFFICES:
+        dispatcher.utter_template(
+            "utter_unsupported_office",
+            home_office=home_office,
+        )
+        return
 
-    def run(self, dispatcher, tracker, domain):
-        self.employee_info = session.get_employee(tracker.sender_id)
-        if not valid_user(self.employee_info):
-            logger.warning("invalid user: %s:%s", tracker.sender_id, self.employee_info)
-            dispatcher.utter_template("utter_invalid_user")
-            return []
+    return employee_info

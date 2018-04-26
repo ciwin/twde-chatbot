@@ -1,7 +1,7 @@
 import functools
 import logging
 
-from chatbot.actions.errors import BackendError
+from chatbot.backend.errors import BackendError
 
 logger = logging.getLogger(__name__)
 
