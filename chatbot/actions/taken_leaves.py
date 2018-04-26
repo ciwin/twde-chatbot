@@ -21,6 +21,7 @@ def _leave_is_within_year(leave, year):
 
 def _leave_duration_days(leave, year):
     # TODO: Take in consideration half days.
+    # TODO: Take in consideration day offs: weekend and public holidays
     start = datetime.datetime.strptime(leave['period']['startsOn'], '%d-%m-%Y')
     if start.year < year:
         start = datetime.datetime(year, 1, 1)

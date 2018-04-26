@@ -66,18 +66,6 @@
 - what can you do for me?
 - how can you help?
 
-
-## intent:sick
-- i got sick and would like to let you know
-- i'm sick
-- i'm staying home, i'm sick
-
-## intent:training
-- workshop
-- training
-- pdb
-- conference
-
 ## intent:leave_annual_total
 - how many vacation days do i have for this year?
 - vacation days for this year?
@@ -144,11 +132,6 @@
 - I want to take some holidays
 - I want to book vacations
 
-## intent:leave_annual_take_date
-- take leave first week of July
-- go on vacation the first week of July
-- take off the first week of July
-
 ## intent:public_holidays
 - public holidays
 - public holiday
@@ -156,25 +139,6 @@
 - when is the next public holiday?
 - when is the next public holiday in my office?
 - Can you remind me, when is the next public holiday?
-
-## intent:option1
-- the first one
-- 1
-- number one
-- number 1
-- the one in may
-- leaves in may
-- may
-- May 2 to May 4
-
-## intent:option2
-- the second one
-- 2
-- number 2
-- number two
-- the one in june
-- june
-- June 10 to June 12
 
 ## intent:confirm
 - yes
@@ -212,3 +176,29 @@
 - nice
 - parlez vous francais
 - deutsch
+
+## intent:inform_date
+- starting the [first of may](leave_start_date)
+- from [12th of july](leave_start_date)
+- starting the [first of july](leave_start_date)
+- from [12th of december](leave_start_date)
+- [third of october](leave_start_date)
+- starting the [third of mar](leave_start_date)
+- from [19th of dec](leave_start_date)
+- second of jan
+- 13.04.2018
+- 17.03.2018
+- 2018-04-01
+- 3rd of January
+- beginning of march
+- end of the week
+- xmas
+- second of april
+- third of october
+- ending the [first of may](leave_end_date)
+- until [12th of july](leave_end_date)
+- to [end of the week](leave_end_date)
+- ending the [first of july](leave_end_date)
+- until [12th of december](leave_end_date)
+- ending the [third of mar](leave_end_date)
+- until [19th of dec](leave_end_date)

@@ -9,6 +9,14 @@ from rasa_nlu.model import Trainer
 from chatbot.config import CONF
 
 
+TRAINING_OPTIONS = {
+    'max_history': CONF.get_value('dialog-model-max-history'),
+    'batch_size': CONF.get_value('dialog-model-batch-size'),
+    'epochs': CONF.get_value('dialog-model-epochs'),
+    'max_training_samples': CONF.get_value('dialog-model-max-training-samples'),
+}
+
+
 def train_classificator():
     trainer = Trainer(RasaNLUConfig(CONF.get_value('nlu-config-file-path')))
     training_data = load_data(CONF.get_value('nlu-training-data-path'))
@@ -17,8 +25,12 @@ def train_classificator():
 
 
 def train_dialog():
-    train_dialogue_model(CONF.get_value('domain-file'), CONF.get_value('stories-file'),
-                         CONF.get_value('dialog-model-path'))
+    train_dialogue_model(
+        CONF.get_value('domain-file'),
+        CONF.get_value('stories-file'),
+        CONF.get_value('dialog-model-path'),
+        kwargs=TRAINING_OPTIONS,
+    )
 
 
 def train_dialog_online(classificator, input_channel):
@@ -27,8 +39,5 @@ def train_dialog_online(classificator, input_channel):
 
     agent.train_online(CONF.get_value('stories-file'),
                        input_channel=input_channel,
-                       max_history=CONF.get_value('dialog-model-max-history'),
-                       batch_size=CONF.get_value('dialog-model-batch-size'),
-                       epochs=CONF.get_value('dialog-model-epochs'),
-                       max_training_samples=CONF.get_value('dialog-model-max-training-samples'))
+                       **TRAINING_OPTIONS)
     return agent

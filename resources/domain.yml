@@ -7,9 +7,6 @@ intents:
 - how_are_you
 - are_you_a_robot
 - what_is_your_name
-- sick
-- sick_help
-- training
 - leave_annual_total
 - leave_annual_left
 - leave_annual_taken
@@ -17,11 +14,9 @@ intents:
 - leave_annual_planned_list
 - leave_annual_cancel
 - leave_annual_take
-- leave_annual_take_date
 - public_holidays
 - confirm
-- option1
-- option2
+- inform_date
 - deny
 - done
 - insult
@@ -29,9 +24,12 @@ intents:
 
 entities:
 - leave_start_date
+- leave_end_date
 
 slots:
  leave_start_date:
+   type: text
+ leave_end_date:
    type: text
 
 actions:
@@ -68,12 +66,12 @@ actions:
 - utter_leave_annual_cancel
 - utter_leave_annual_take
 - utter_leave_annual_take_confirm
+- utter_leave_annual_take_ask_start
+- utter_leave_annual_take_ask_end
 - utter_leave_annual_do_confirm
 - utter_leave_annual_booked
 - utter_public_holidays
 - utter_confirm
-- utter_option1
-- utter_option2
 - utter_deny
 - utter_deny_bye
 - utter_done
@@ -84,6 +82,7 @@ actions:
 - chatbot.actions.taken_leaves.ActionLeaveTaken
 - chatbot.actions.taken_leaves.ActionLeaveLeft
 - chatbot.actions.public_holidays.ActionPublicHolidays
+- chatbot.actions.book_leave.ActionBookLeave
 
 
 templates:
@@ -184,10 +183,6 @@ templates:
     - text: "Next public holiday is on {date}"
   utter_confirm:
     - text: "Done!"
-  utter_option1:
-    - text: "Cool, you'd like to cancel your leave from May 2 to May 4. Right?"
-  utter_option2:
-    - text: "Cool, you'd like to cancel your leave from June 10 to June 12. Right?"
   utter_deny:
     - text: "Alright then. Anything else I can help you with?"
   utter_done:
@@ -207,3 +202,11 @@ templates:
     - text: "Sorry, we do not support user from home office {home_office}"
   utter_backend_not_running:
     - text: "Sorry that part of my system is not reachable right now."
+  utter_leave_annual_take_ask_start:
+    - text: "When do you want to start your vacation?"
+    - text: "Starting when?"
+    - text: "From when?"
+  utter_leave_annual_take_ask_end:
+      - text: "When do you want your vacation to end?"
+      - text: "Until when?"
+      - text: "To?"
