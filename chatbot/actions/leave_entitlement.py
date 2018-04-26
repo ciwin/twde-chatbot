@@ -10,8 +10,8 @@ from chatbot.backend.errors import BackendError
 logger = logging.getLogger(__name__)
 
 
-def get_annual_leave_total(employee, year):
-    leave_details = leave_backend_api.get_leave_entitlement(employee, year)
+def get_annual_leave_total(employee_info, year):
+    leave_details = leave_backend_api.get_leave_entitlement(employee_info, year)
     return leave_details.get('leaveEntitlement')
 
 

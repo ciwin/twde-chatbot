@@ -2,6 +2,8 @@ from chatbot.actions import taken_leaves
 
 
 def test_leaves_taken_within_same_year(mocker):
+    leave_api_mock = mocker.patch('chatbot.backend.leave_backend_api.get_leave_entitlement')
+    leave_api_mock.return_value = {'leaveEntitlement': 42}
     backend_mock = mocker.patch('chatbot.backend.backend_api.get_leaves')
     backend_mock.return_value = [
         {
@@ -38,8 +40,13 @@ def test_leaves_taken_within_same_year(mocker):
 
     assert 1 + 2 == taken_leaves.get_leaves_taken({'employeeId': '42', 'homeOffice': {'name': 'Berlin'}}, 2018)
 
+    assert 42 - 1 - 2 == taken_leaves.get_leaves_left({'employeeId': '42', 'homeOffice': {'name': 'Berlin'}}, 2018)
+
 
 def test_leaves_taken_with_different_years(mocker):
+    leave_api_mock = mocker.patch('chatbot.backend.leave_backend_api.get_leave_entitlement')
+    leave_api_mock.return_value = {'leaveEntitlement': 42}
+
     backend_mock = mocker.patch('chatbot.backend.backend_api.get_leaves')
     backend_mock.return_value = [
         {
@@ -64,3 +71,5 @@ def test_leaves_taken_with_different_years(mocker):
         }]
 
     assert 2 + 3 == taken_leaves.get_leaves_taken({'employeeId': '42', 'homeOffice': {'name': 'Berlin'}}, 2018)
+
+    assert 42 - 2 - 3 == taken_leaves.get_leaves_left({'employeeId': '42', 'homeOffice': {'name': 'Berlin'}}, 2018)

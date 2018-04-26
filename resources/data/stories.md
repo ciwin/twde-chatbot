@@ -70,7 +70,7 @@
 
 ## leave_annual_left
 * leave_annual_left
-  - utter_leave_annual_left
+  - action_leave_annual_left
 
 ## leave_annual_taken
 * leave_annual_taken
@@ -128,7 +128,7 @@
 
 ## leave_annual_take
 * leave_annual_take
-  - utter_leave_annual_left
+  - action_leave_annual_left
   - utter_leave_annual_take
 * leave_annual_take_date
   - utter_leave_annual_take_confirm
@@ -140,7 +140,7 @@
 
 ## leave_annual_take
 * leave_annual_take
-  - utter_leave_annual_left
+  - action_leave_annual_left
   - utter_leave_annual_take
 * leave_annual_take_date
   - utter_leave_annual_take_confirm

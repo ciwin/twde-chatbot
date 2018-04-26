@@ -29,6 +29,7 @@ def get_employee(id):
         return json.loads(val)
 
 
+# noinspection PyShadowingBuiltins,PyShadowingBuiltins
 def set_employee(id, info):
     info = json.dumps(info)
     _get_client().set(_get_key(id), info, ex=CONF.get_value('redis-expire-time'))

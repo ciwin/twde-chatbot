@@ -8,8 +8,8 @@ from chatbot.nlp_models import dialog, train
 
 
 def run():
-    classificator = train.load_classificator()
-    return dialog.train_dialog_online(classificator, ConsoleInputChannel())
+    classificator = dialog.load_classificator()
+    return train.train_dialog_online(classificator, ConsoleInputChannel())
 
 
 if __name__ == '__main__':

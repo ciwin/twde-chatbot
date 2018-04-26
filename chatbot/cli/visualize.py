@@ -8,7 +8,7 @@ except ImportError:
     print("For OSX please run: brew install graphviz")
     sys.exit(1)
 
-from chatbot.nlu import dialog
+from chatbot.nlp_models import dialog
 from chatbot.config import CONF
 
 

@@ -8,8 +8,8 @@ from chatbot.actions import employee
 from chatbot.actions.employee import GERMANY_OFFICES
 
 
-def next_public_holiday(from_date, employee):
-    state_code = GERMANY_OFFICES.get(employee['homeOffice']['name'])
+def next_public_holiday(from_date, employee_info):
+    state_code = GERMANY_OFFICES.get(employee_info['homeOffice']['name'])
     state_calendar = registry.get_calendar_class(state_code)()
 
     holidays = itertools.chain(state_calendar.holidays(from_date.year), state_calendar.holidays(from_date.year + 1))
