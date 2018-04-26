@@ -80,9 +80,9 @@ actions:
 - utter_insult
 - utter_insult_follow_up
 - utter_random
-- chatbot.actions.leave.ActionLeaveAnnualTotal
-- chatbot.actions.leave.ActionLeaveTaken
-- chatbot.actions.leave.ActionPublicHolidays
+- chatbot.actions.leave_entitlement.ActionLeaveAnnualTotal
+- chatbot.actions.taken_leaves.ActionLeaveTaken
+- chatbot.actions.public_holidays.ActionPublicHolidays
 
 
 templates:
