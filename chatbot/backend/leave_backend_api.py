@@ -14,6 +14,5 @@ def get_leave_entitlement(employee, year):
     }
     jwt_token = jwt.encode(request_body, CONF.get_value('leave-api-key'), algorithm='HS256')
 
-    # TODO: change to leave-entitlement when v2 deploys
-    return requests.get(CONF.get_value('leave-api-url') + 'leaveentitlement',
+    return requests.get(CONF.get_value('leave-api-url') + 'leave-entitlement',
                         headers={'Authorization': 'Bearer %s' % jwt_token.decode("utf-8")})
