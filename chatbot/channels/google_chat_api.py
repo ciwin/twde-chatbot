@@ -2,8 +2,8 @@ import logging
 
 from flask import Flask, request, json
 
+from chatbot.channels import middlewares
 from chatbot.config import CONF
-from chatbot.messenger import middlewares
 from chatbot.nlp_models import dialog
 
 logger = logging.getLogger(__name__)

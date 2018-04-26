@@ -1,9 +1,7 @@
 import pytest
 
-from chatbot.messenger import google_chat_api
-
+from chatbot.channels import google_chat_api
 from .. import helpers
-
 
 SMOKE_CONVERSATIONS = [
     'ask_for_leave.json',

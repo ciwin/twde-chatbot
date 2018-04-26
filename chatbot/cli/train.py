@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-from chatbot.nlp_models import intent_classificator, dialog
+from chatbot.nlp_models import train
 
 
 def run():
-    intent_classificator.train_classificator()
-    dialog.train_dialog()
+    train.train_classificator()
+    train.train_dialog()
 
 
 if __name__ == '__main__':

@@ -2,13 +2,10 @@ import logging
 import threading
 
 from rasa_core.agent import Agent
-from rasa_core.policies.keras_policy import KerasPolicy
-from rasa_core.policies.memoization import MemoizationPolicy
-from rasa_core.train import train_dialogue_model
+from rasa_core.interpreter import RasaNLUInterpreter
 
 from chatbot import analytics
 from chatbot.config import CONF
-from chatbot.nlp_models import intent_classificator
 
 logger = logging.getLogger(__name__)
 
@@ -16,12 +13,16 @@ _AGENT = None
 _AGENT_LOCK = threading.RLock()
 
 
+def load_classificator():
+    return RasaNLUInterpreter(CONF.get_value('classification-model-path'))
+
+
 def get_agent():
     global _AGENT
     if not _AGENT:
         logger.debug("Creating a new agent")
         with _AGENT_LOCK:
-            _AGENT = load_agent(intent_classificator.load_classificator())
+            _AGENT = load_agent(load_classificator())
     return _AGENT
 
 
@@ -52,21 +53,3 @@ def get_welcome_message(context_agent, sender_id=None):
 
 def get_fallback_message(context_agent):
     return context_agent.domain.random_template_for('utter_fallback')['text']
-
-
-def train_dialog():
-    train_dialogue_model(CONF.get_value('domain-file'), CONF.get_value('stories-file'),
-                         CONF.get_value('dialog-model-path'))
-
-
-def train_dialog_online(classificator, input_channel):
-    agent = Agent(CONF.get_value('domain-file'), policies=[MemoizationPolicy(), KerasPolicy()],
-                  interpreter=classificator)
-
-    agent.train_online(CONF.get_value('stories-file'),
-                       input_channel=input_channel,
-                       max_history=CONF.get_value('dialog-model-max-history'),
-                       batch_size=CONF.get_value('dialog-model-batch-size'),
-                       epochs=CONF.get_value('dialog-model-epochs'),
-                       max_training_samples=CONF.get_value('dialog-model-max-training-samples'))
-    return agent

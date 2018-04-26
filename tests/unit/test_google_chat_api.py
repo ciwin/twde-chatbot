@@ -2,7 +2,7 @@ import fakeredis
 from flask import json
 
 from chatbot import session
-from chatbot.messenger import google_chat_api
+from chatbot.channels import google_chat_api
 
 google_chat_api.app.testing = True
 

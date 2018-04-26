@@ -1,8 +1,8 @@
 import os
 import subprocess
 
+from chatbot.channels import google_chat_api
 from chatbot.cli import train
-from chatbot.messenger import google_chat_api
 from .. import helpers
 
 google_chat_api.app.testing = True

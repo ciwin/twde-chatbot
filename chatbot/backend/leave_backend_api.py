@@ -1,11 +1,11 @@
 import jwt
 import requests
 
-from chatbot.backend import middlewares
+from chatbot.backend import decorators
 from chatbot.config import CONF
 
 
-@middlewares.valid_response
+@decorators.valid_response
 def get_leave_entitlement(employee, year):
     request_body = {
         'employeeId': employee.get('employeeId'),

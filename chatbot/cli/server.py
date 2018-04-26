@@ -7,8 +7,8 @@ import time
 from werkzeug.contrib.profiler import ProfilerMiddleware
 
 from chatbot.analytics import start_batch_sender
+from chatbot.channels import google_chat_api
 from chatbot.config import CONF
-from chatbot.messenger import google_chat_api
 from chatbot.nlp_models import dialog
 
 logger = logging.getLogger(__name__)

@@ -2,7 +2,7 @@ import logging
 
 import requests
 
-from chatbot.backend import middlewares
+from chatbot.backend import decorators
 from chatbot.config import CONF
 
 logger = logging.getLogger(__name__)
@@ -13,13 +13,13 @@ def _login_name(email):
     return email.split('@')[0]
 
 
-@middlewares.valid_response
+@decorators.valid_response
 def get_employee(email):
     url = BASE_API_URL + 'people/' + _login_name(email)
     return requests.get(url, headers={'Authorization': CONF.get_value('backend-api-token')})
 
 
-@middlewares.valid_response
+@decorators.valid_response
 def get_leaves(employee_id):
     url = BASE_API_URL + 'leave?employee_ids=' + employee_id
     return requests.get(url, headers={'Authorization': CONF.get_value('backend-api-token')})
