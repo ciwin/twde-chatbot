@@ -27,6 +27,13 @@ intents:
 - insult
 - random
 
+entities:
+- leave_start_date
+
+slots:
+ leave_start_date:
+   type: text
+
 actions:
 - utter_fallback
 - utter_welcome

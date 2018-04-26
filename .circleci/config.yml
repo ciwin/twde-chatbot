@@ -17,10 +17,10 @@ jobs:
           name: Install dependencies
           command: pipenv sync --dev
       - save_cache:
-          key: cache-{{ checksum "Pipfile.lock" }}
+          key: v1-cache-{{ checksum "Pipfile.lock" }}
           paths:
             - ~/.local
-            - ~/.v1-cache
+            - ~/.cache
       - run:
           name: run tests
           command: |

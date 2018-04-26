@@ -22,6 +22,16 @@ export LANG=en_US.UTF-8
 
 ### Install
 
+#### System Depdendencies
+
+Make sure that graphviz is installed, in OSX that will be:
+
+```bash
+brew install pkg-config graphviz
+```
+
+#### Python Dependencies
+
 To install all dependencies execute:
 
 ```
@@ -29,6 +39,8 @@ pipenv install --dev
 ```
 
 ## Play
+
+### Training
 
 First you need to train the bot, to do start by downloading language dependencies (this only need to be done once):
 
@@ -42,7 +54,15 @@ Then run training use:
 - `pipenv run chatbot/cli/train.py` for running normal training.
 - `pipenv run chatbot/cli/train_online.py` for running interactive training.
 
-Then to start the bot, there is multiple ways:
+### Running
+
+First make sure that redis is running locally, one way of doing it is by running:
+
+```bash
+docker run --publish 6379:6379 --name redis -d redis
+```
+
+Then to start the bot there is multiple ways:
 
 - In the console: ```pipenv run chatbot/cli/console.py```
 - As a google chat api: ```pipenv run chatbot/cli/server.py```
@@ -54,13 +74,9 @@ To reduce logging verbosity set the environment variable LOGLEVEL to error, for 
 LOGLEVEL=ERROR pipenv run chatbot/cli/console.py
 ```
 
-The bot uses a redis db internally so you would need a running redis db.
-You can for example just start one with docker:
-```bash
-docker run --publish 6379:6379 --name redis -d redis
-```
-
 ## Test
+
+### Automated Testing
 
 To run tests use:
 
@@ -68,3 +84,11 @@ To run tests use:
 pipenv run pytest
 ```
 
+### Manual Testing
+
+You need to send a POST to the following endpoint `http://localhost:5000/endpoint`, the body should conforms to
+what Google Chat send, for more information about the payload check `tests/helpers.py` file for example of payload.
+
+Another way to test will be to create a test bot in Google Chat, you can more information about how to do that [here](https://developers.google.com/hangouts/chat/concepts/bots).
+
+Also you can use [ngrok](https://ngrok.com/) to expose a public address and use that in the bot configuration, just make sure that you set the `HANGOUT_API_KEY` environment variable to the same value that Google Chat provides. 
