@@ -1,0 +1,7 @@
+{
+  "how much vacation do i have planned?": {
+    "templates": [
+      "utter_leave_annual_planned"
+    ]
+  }
+}

@@ -1,6 +1,5 @@
 import datetime
 import os
-import subprocess
 
 from freezegun import freeze_time
 
@@ -75,7 +74,7 @@ with google_chat_api.app.test_client() as client:
         helpers.conversation_tester(
             client, 'ask_for_leave.json',
             template_filler={
-                'days_left': 39,
+                'days_left': 40.0,
                 'year': 2018,
                 'date': datetime.date(2018, 5, 1).strftime("%d %B %Y"),
             },
@@ -88,8 +87,19 @@ with google_chat_api.app.test_client() as client:
         helpers.conversation_tester(
             client, 'check_leaves_and_holidays.json',
             template_filler={
-                'days_left': 39,
+                'days_left': 40.0,
                 'year': 2018,
                 'date': datetime.date(2018, 5, 1).strftime("%d %B %Y"),
+            },
+        )
+
+
+    @freeze_time("2018-04-24")
+    def test_check_planned_leaves(mocker):
+        mock_external_systems(mocker)
+        helpers.conversation_tester(
+            client, 'check_planned_leaves.json',
+            template_filler={
+                'leaves_planned': 2.0
             },
         )

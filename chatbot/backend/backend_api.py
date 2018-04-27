@@ -20,8 +20,11 @@ def get_employee(email):
 
 
 @decorators.valid_response
-def get_leaves(employee_id):
+def get_leaves(employee_id, start_date=None):
     url = BASE_API_URL + 'leave?employee_ids=' + employee_id
+    if start_date:
+        url += '&start_date=' + start_date
+        
     return requests.get(url, headers={'Authorization': CONF.get_value('backend-api-token')})
 
 

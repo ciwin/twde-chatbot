@@ -87,7 +87,7 @@
 
 ## leave_annual_planned
 * leave_annual_planned
-  - utter_leave_annual_planned
+  - action_leave_annual_planned
 * confirm  
   - utter_leave_annual_planned_list
   - utter_leave_annual_planned_list_1
@@ -95,7 +95,7 @@
 
 ## leave_annual_planned
 * leave_annual_planned
-  - utter_leave_annual_planned
+  - action_leave_annual_planned
 * deny  
   - utter_deny
 
