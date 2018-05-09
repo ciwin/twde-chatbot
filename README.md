@@ -13,7 +13,7 @@ Right now the documentation only contains interesting links to get started with 
 Make sure that:
 
 - You have python3.
-- [pipenv](https://docs.pipenv.org/) is installed, if not run `pip install pyenv`.
+- [pipenv](https://docs.pipenv.org/) is installed, if not run `pip install pipenv`.
 - Language setup correctly to english
 ```
 export LC_ALL=en_US.UTF-8
